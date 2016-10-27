@@ -8,13 +8,6 @@ const bodyParser      = require('body-parser');
 const methodOverride  = require('method-override');
 const path            = require('path');
 
-/* The following modules are needed for oAuth with Yelp's API */
-const oauthSignature  = require('oauth-signature');
-const n               = require('nonce')();
-const request         = require('request');
-const qs =            = require('querystring');
-var _                 = require('lodash');
-
 // Set up routes
 const homeRoute       = require('./routes/home');
 const exploreRoute    = require('./routes/explore');
