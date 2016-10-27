@@ -15,23 +15,27 @@ const url = 'http://api.yelp.com/v2/search';
 // Set our secrets here
 const consumerSecret = process.env.consumerSecret;
 const tokenSecret = process.env.tokenSecret;
+const consumerKey = process.env.oauth_consumer_key;
+const oauthToken = process.env.oauth_token;
 
 // Code found at: https://arian.io/how-to-use-yelps-api-with-node/
 // and help from Samuel Na!
-function requestYelp(req, res, next) {
+function searchYelp(req, res, next) {
   // The type of request
   const httpMethod = 'GET';
 
   // Set parameters
-  const userParams = req.body.term;
-
-  console.log(req.body);
+  const userParams = {
+    term: req.body.term,
+  };
+  console.log(userParams);
 
   // Set the require parameters here
   const requiredParams = {
+    location: 'New+York',
     sort: '2',
-    oauth_consumer_key: process.env.oauth_consumer_key,
-    oauth_token: process.env.oauth_token,
+    oauth_consumer_key: consumerKey,
+    oauth_token: oauthToken,
     oauth_nonce: n(),
     oauth_timestamp: n().toString().substr(0, 10),
     oauth_signature_method: 'HMAC-SHA1',
@@ -40,7 +44,7 @@ function requestYelp(req, res, next) {
 
   // Combine all the parameters in order of importance
   const parameters = _.assign(userParams, requiredParams);
-
+  console.log(parameters);
 
   // Call on Yelp's Oauth 1.0a server, and it returns a signature
   // Note: This signature is only good for 300 seconds after oauth_timestamp
@@ -54,11 +58,20 @@ function requestYelp(req, res, next) {
 
   // Add the query string to the url
   const apiURL = `${url}?${paramURL}`;
+  console.log(apiURL);
 
   // Then use fetch to send the API request
-  fetch(apiURL, (error, response, body) => {
-    return callback(error, response, body);
+  fetch(apiURL)
+  .then(r => r.json())
+  .then((result) => {
+    res.yelp = result.businesses;
+    console.log(res.yelp)
+    next();
+  })
+  .catch((err) => {
+    res.err = err;
+    next();
   });
 }
 
-module.exports = { requestYelp };
+module.exports = { searchYelp };
