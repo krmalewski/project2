@@ -5,9 +5,10 @@ const yelpService = require('../services/yelp');
 const dbService = require('../models/favorites');
 
 // Set up our routes
-router.get('/', yelpService.initialSearch, (req, res) => {
+router.get('/', yelpService.initialSearch, dbService.getFavorites, (req, res) => {
   res.render('explore', {
     results: res.attractions,
+    favorites: res.favorite || [],
   });
 });
 

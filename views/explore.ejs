@@ -12,7 +12,17 @@
     <input type="text" name="term" placeholder="Search for attractions">
     <input type="submit" value="Search">
   </form>
-  <h1>Top Attractions in <%= results[0].location.city %></h1>
+  <div id="bucket-list">
+    <h1>Bucket List for <%= results[0].location.city %>, <%= results[0].location.state_code %></h1>
+    <ul class="visit-here-list">
+      <% favorites.forEach( attraction => { %>
+      <li class="bucket-list-item">
+        <h3><%= attraction.name %></h3>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+  <h1>Top Attractions in <%= results[0].location.city %>, <%= results[0].location.state_code %></h1>
   <% results.forEach( result => { %>
     <div class="tourism">
       <h2><%= result.name %></h2>
