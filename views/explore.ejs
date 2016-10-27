@@ -25,6 +25,15 @@
       <div id="attraction-image">
         <img src="<%= result.image_url %>" alt="">
       </div>
+      <form class="save-favorite" action="/explore/favorites" method="POST">
+          <input type="hidden" name="city" value=" <%= result.location.city %>">
+          <input type="hidden" name="favorite[name]" value="<%= result.name %>">
+          <input type="hidden" name="favorite[coordinate]" value="<%= result.location.coordinate %>">
+          <input type="hidden" name="favorite[snip]" value="<%= result.snippet_text %>">
+          <input type="hidden" name="favorite[address]" value="<%= result.location.display_address %>">
+          <input type="hidden" name="favorite[phone]" value="<%= result.display_phone %>">
+          <input type="submit" value="Add to Bucket List!">
+        </form>
     </div>
   <% }) %>
 </body>

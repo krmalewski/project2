@@ -39,7 +39,6 @@ function initialSearch(req, res, next) {
   const userParams = {
     location: req.query.location
   };
-  console.log(userParams);
 
   // Set the require parameters here
   const requiredParams = {
@@ -55,7 +54,6 @@ function initialSearch(req, res, next) {
 
   // Combine all the parameters in order of importance
   const parameters = _.assign(userParams, requiredParams);
-  console.log(parameters);
 
   // Call on Yelp's Oauth 1.0a server, and it returns a signature
   // Note: This signature is only good for 300 seconds after oauth_timestamp

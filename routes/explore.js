@@ -2,6 +2,7 @@
 const router = require('express').Router();
 
 const yelpService = require('../services/yelp');
+const dbService = require('../models/favorites');
 
 // Set up our routes
 router.get('/', yelpService.initialSearch, (req, res) => {
@@ -14,11 +15,12 @@ router.get('/', yelpService.initialSearch, (req, res) => {
 //   res.json(res.attractions);
 // });
 
-// router.post('/search', yelpService.searchYelp, (req, res) => {
-//   console.log(res.yelp);
-//   res.render('explore', {
-//     results: res.yelp || [],
-//   });
-// });
+
+router.post('/favorites', yelpService.getCity, dbService.saveFavorite, (req, res) => {
+  console.log(res.city)
+  const city = res.city;
+  res.redirect(`/explore?location=${city}`);
+});
+
 
 module.exports = router;
