@@ -25,6 +25,11 @@ function getCity(req, res, next) {
   next();
 }
 
+function keepCity(req, res, next) {
+  res.city = req.query.location;
+  next();
+}
+
 // Code found at: https://arian.io/how-to-use-yelps-api-with-node/
 // and help from Samuel Na!
 // This function will get the location that the user searched on the login
@@ -137,6 +142,7 @@ function searchAttractions(req, res, next) {
 //
 module.exports = {
   getCity,
+  keepCity,
   initialSearch,
   searchAttractions,
 };

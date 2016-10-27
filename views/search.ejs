@@ -7,18 +7,18 @@
   <link rel="stylesheet" href="">
 </head>
 <body>
-  <h1>Explore!</h1>
+  <h1>Search!</h1>
   <form action="/explore/search" method="post">
     <input type="text" name="term" placeholder="Search for attractions">
     <input type="submit" value="Search">
   </form>
   <div id="bucket-list">
-    <h1>Bucket List for <%= favorites[0].city %>, <%= favorites[0].state %></h1>
+    <h1>Bucket List</h1>
     <ul class="visit-here-list">
       <% favorites.forEach( attraction => { %>
       <li class="bucket-list-item">
         <h3><%= attraction.name %></h3>
-        <form class="delete-favorite" action="/explore/favorites/<%= attraction._id %>?_method=DELETE" method="post">
+        <form class="delete-favorite" action="/search/favorites/<%= attraction._id %>?_method=DELETE" method="post">
           <input type="hidden" name="location" value=" <%= attraction.location %>">
           <input type="submit" value="Delete">
         </form>
