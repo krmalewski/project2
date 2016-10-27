@@ -29,16 +29,30 @@
 
   <div id="search-results">
     <% places.forEach( place => { %>
-    <div class="search-item">
-      <h3><%= place.name %></h3>
-      <p>Rating: <%= place.rating %> <img src="<%= place.rating_img_url_small %>" alt=""></p>
-      <p><%= place.snippet_text %>
-        <a href="<%= place.url %>">more info here</a>
-      </p>
-      <p>Address: <%= place.location.display_address %></p>
-      <p>Phone: <%= place.display_phone %></p>
-      <div id="attraction-image">
-        <img src="<%= place.image_url %>" alt="">
+      <div class="search-item">
+        <h3><%= place.name %></h3>
+        <p>Rating: <%= place.rating %> <img src="<%= place.rating_img_url_small %>" alt=""></p>
+        <p><%= place.snippet_text %>
+          <a href="<%= place.url %>">more info here</a>
+        </p>
+        <p>Address: <%= place.location.display_address %></p>
+        <p>Phone: <%= place.display_phone %></p>
+        <div id="attraction-image">
+          <img src="<%= place.image_url %>" alt="">
+        </div>
+      <div>
+        <form class="save-favorite" action="/search/favorites" method="POST">
+          <input type="hidden" name="location" value=" <%= places[0].location.city %>">
+          <input type="hidden" name="favorite[name]" value="<%= place.name %>">
+          <input type="hidden" name="favorite[location]" value=" <%= places[0].location.city %>">
+          <input type="hidden" name="favorite[state]" value=" <%= place.location.state_code %>">
+          <input type="hidden" name="favorite[latitude]" value="<%= place.location.coordinate.latitude %>">
+          <input type="hidden" name="favorite[longitude]" value="<%= place.location.coordinate.longitude %>">
+          <input type="hidden" name="favorite[snip]" value="<%= place.snippet_text %>">
+          <input type="hidden" name="favorite[address]" value="<%= place.location.display_address %>">
+          <input type="hidden" name="favorite[phone]" value="<%= place.display_phone %>">
+          <input type="submit" value="Add to Bucket List!">
+        </form>
       </div>
     </div>
     <% }) %>
