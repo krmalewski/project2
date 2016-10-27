@@ -18,10 +18,13 @@ router.get('/', yelpService.initialSearch, dbService.getFavorites, (req, res) =>
 
 
 router.post('/favorites', yelpService.getCity, dbService.saveFavorite, (req, res) => {
-  console.log(res.city)
   const city = res.city;
   res.redirect(`/explore?location=${city}`);
 });
 
+router.delete('/favorites/:id', yelpService.getCity, dbService.deleteFavorites, (req, res) => {
+  const city = res.city;
+  res.redirect(`/explore?location=${city}`);
+});
 
 module.exports = router;
