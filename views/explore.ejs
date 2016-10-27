@@ -12,6 +12,20 @@
     <input type="text" name="term" placeholder="Search for attractions">
     <input type="submit" value="Search">
   </form>
-  <h1>Top Attractions in New York!</h1>
+  <h1>Top Attractions in <%= results[0].location.city %></h1>
+  <% results.forEach( result => { %>
+    <div class="tourism">
+      <h2><%= result.name %></h2>
+      <p>Rating: <%= result.rating %> <img src="<%= result.rating_img_url_small %>" alt=""></p>
+      <p><%= result.snippet_text %>
+        <a href="<%= result.url %>">more info here</a>
+      </p>
+      <p>Address: <%= result.location.display_address %></p>
+      <p>Phone: <%= result.display_phone %></p>
+      <div id="attraction-image">
+        <img src="<%= result.image_url %>" alt="">
+      </div>
+    </div>
+  <% }) %>
 </body>
 </html>

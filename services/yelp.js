@@ -18,21 +18,32 @@ const tokenSecret = process.env.tokenSecret;
 const consumerKey = process.env.oauth_consumer_key;
 const oauthToken = process.env.oauth_token;
 
+// This function will find the city the user wants to search for
+// and send it to the explore page
+function getCity(req, res, next) {
+  res.city = req.body.city;
+  next();
+}
+
+
 // Code found at: https://arian.io/how-to-use-yelps-api-with-node/
 // and help from Samuel Na!
-function searchYelp(req, res, next) {
+// This function will get the city that the user searched on the login
+// page and input that as the userParams. This will allow the initial
+// tourist attractions to render to the page upon login
+function initialSearch(req, res, next) {
   // The type of request
   const httpMethod = 'GET';
 
   // Set parameters
   const userParams = {
-    term: req.body.term,
+    location: req.query.location
   };
   console.log(userParams);
 
   // Set the require parameters here
   const requiredParams = {
-    location: 'New+York',
+    term: 'tourist_attractions',
     sort: '2',
     oauth_consumer_key: consumerKey,
     oauth_token: oauthToken,
@@ -64,7 +75,7 @@ function searchYelp(req, res, next) {
   fetch(apiURL)
   .then(r => r.json())
   .then((result) => {
-    res.yelp = result.businesses;
+    res.attractions = result.businesses;
     console.log(res.yelp)
     next();
   })
@@ -74,4 +85,8 @@ function searchYelp(req, res, next) {
   });
 }
 
-module.exports = { searchYelp };
+//
+module.exports = {
+  initialSearch,
+  getCity,
+};
