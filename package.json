@@ -1,0 +1,35 @@
+{
+  "name": "project2",
+  "version": "1.0.0",
+  "description": "Trip planner application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krmalewski/project2.git"
+  },
+  "author": "Krystyna Malewski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krmalewski/project2/issues"
+  },
+  "homepage": "https://github.com/krmalewski/project2#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "method-override": "^2.3.6",
+    "morgan": "^1.7.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "eslint": "^3.8.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^2.0.1",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1"
+  }
+}
