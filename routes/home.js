@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 
 
 router.post('/findcity', yelpService.getCity, (req, res) => {
-  const city = res.city;
+  const city = res.getcity;
   res.redirect(`explore?location=${city}`);
 });
 

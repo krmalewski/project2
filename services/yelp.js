@@ -21,12 +21,12 @@ const oauthToken = process.env.oauth_token;
 // This function will find the location the user wants to search for
 // and send it to the explore page
 function getCity(req, res, next) {
-  res.city = req.body.location;
+  res.getcity = req.body.location;
   next();
 }
 
 function keepCity(req, res, next) {
-  res.city = req.query.location;
+  res.keepcity = req.query.location;
   next();
 }
 

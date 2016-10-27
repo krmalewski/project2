@@ -9,7 +9,7 @@ router.get('/', yelpService.keepCity, yelpService.initialSearch, dbService.getFa
   res.render('explore', {
     results: res.attractions,
     favorites: res.favorite || [],
-    city: res.city,
+    city: res.keepcity,
   });
 });
 
@@ -19,12 +19,12 @@ router.get('/', yelpService.keepCity, yelpService.initialSearch, dbService.getFa
 
 
 router.post('/favorites', yelpService.getCity, dbService.saveFavorite, (req, res) => {
-  const city = res.city;
+  const city = res.getcity;
   res.redirect(`/explore?location=${city}`);
 });
 
 router.delete('/favorites/:id', yelpService.getCity, dbService.deleteFavorites, (req, res) => {
-  const city = res.city;
+  const city = res.getcity;
   res.redirect(`/explore?location=${city}`);
 });
 

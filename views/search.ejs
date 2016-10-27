@@ -8,18 +8,19 @@
 </head>
 <body>
   <h1>Search!</h1>
-  <form action="/explore/search" method="post">
+  <form action="/search" method="GET">
+    <input type="hidden" name="location" value=" <%= city %>">
     <input type="text" name="term" placeholder="Search for attractions">
     <input type="submit" value="Search">
   </form>
   <div id="bucket-list">
-    <h1>Bucket List</h1>
+    <h1>Bucket List for <%= city %>, <%= places[0].location.state_code %></h1>
     <ul class="visit-here-list">
       <% favorites.forEach( attraction => { %>
       <li class="bucket-list-item">
         <h3><%= attraction.name %></h3>
         <form class="delete-favorite" action="/search/favorites/<%= attraction._id %>?_method=DELETE" method="post">
-          <input type="hidden" name="location" value=" <%= attraction.location %>">
+          <input type="hidden" name="location" value=" <%= city %>">
           <input type="submit" value="Delete">
         </form>
       </li>
@@ -42,9 +43,9 @@
         </div>
       <div>
         <form class="save-favorite" action="/search/favorites" method="POST">
-          <input type="hidden" name="location" value=" <%= places[0].location.city %>">
+          <input type="hidden" name="location" value=" <%= city %>">
           <input type="hidden" name="favorite[name]" value="<%= place.name %>">
-          <input type="hidden" name="favorite[location]" value=" <%= places[0].location.city %>">
+          <input type="hidden" name="favorite[location]" value=" <%= place.location.city  %>">
           <input type="hidden" name="favorite[state]" value=" <%= place.location.state_code %>">
           <input type="hidden" name="favorite[latitude]" value="<%= place.location.coordinate.latitude %>">
           <input type="hidden" name="favorite[longitude]" value="<%= place.location.coordinate.longitude %>">
