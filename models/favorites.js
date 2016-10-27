@@ -33,7 +33,6 @@ function getFavorites(req, res, next) {
     .find({})
     .toArray((arrayError, data) => {
       if (arrayError) return next(arrayError);
-      console.log(data);
       res.favorite = data;
       db.close();
       return next();

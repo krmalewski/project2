@@ -12,6 +12,7 @@ const path            = require('path');
 // Set up routes
 const homeRoute       = require('./routes/home');
 const exploreRoute    = require('./routes/explore');
+const searchRoute      = require('./routes/search');
 
 const app             = express();
 const PORT            = process.argv[2] || process.env.PORT || 3000;
@@ -37,3 +38,4 @@ app.listen(PORT, () => console.log('Server is up and running on port ', PORT));
 
 app.use('/', homeRoute);
 app.use('/explore', exploreRoute);
+app.use('/search', searchRoute);

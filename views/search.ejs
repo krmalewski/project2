@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Search Your City</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <h1>Explore!</h1>
+  <form action="/explore/search" method="post">
+    <input type="text" name="term" placeholder="Search for attractions">
+    <input type="submit" value="Search">
+  </form>
+  <div id="bucket-list">
+    <h1>Bucket List for <%= favorites[0].city %>, <%= favorites[0].state %></h1>
+    <ul class="visit-here-list">
+      <% favorites.forEach( attraction => { %>
+      <li class="bucket-list-item">
+        <h3><%= attraction.name %></h3>
+        <form class="delete-favorite" action="/explore/favorites/<%= attraction._id %>?_method=DELETE" method="post">
+          <input type="hidden" name="location" value=" <%= attraction.location %>">
+          <input type="submit" value="Delete">
+        </form>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+
+  <div id="search-results">
+    <% places.forEach( place => { %>
+    <div class="search-item">
+      <h3><%= place.name %></h3>
+      <p>Rating: <%= place.rating %> <img src="<%= place.rating_img_url_small %>" alt=""></p>
+      <p><%= place.snippet_text %>
+        <a href="<%= place.url %>">more info here</a>
+      </p>
+      <p>Address: <%= place.location.display_address %></p>
+      <p>Phone: <%= place.display_phone %></p>
+      <div id="attraction-image">
+        <img src="<%= place.image_url %>" alt="">
+      </div>
+    </div>
+    <% }) %>
+  </div>
+
+</body>
+</html>
