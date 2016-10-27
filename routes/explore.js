@@ -11,7 +11,9 @@ router.get('/', (req, res) => {
 
 router.post('/search', yelpService.searchYelp, (req, res) => {
   console.log(res.yelp);
-  res.json(res.yelp);
+  res.render('explore', {
+    results: res.yelp,
+  });
 });
 
 module.exports = router;
