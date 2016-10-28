@@ -39,9 +39,14 @@ function initialSearch(req, res, next) {
   // The type of request
   const httpMethod = 'GET';
 
+  const cityString = req.query.location;
+  const array = cityString.split(',');
+  const indexTwo = array[1].trim();
+  let city = `${array[0]}+${indexTwo}`;
+  console.log(city);
   // Set parameters
   const userParams = {
-    location: req.query.location
+    location: city,
   };
 
   // Set the require parameters here

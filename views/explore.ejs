@@ -9,33 +9,33 @@
 <body>
   <h1>Explore!</h1>
   <form action="/search" method="GET">
-    <input type="hidden" name="location" value=" <%= results[0].location.city %>">
+    <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
     <input type="text" name="term" placeholder="Search for attractions">
     <input type="submit" value="Search">
   </form>
   <div id="bucket-list">
-    <h1>Bucket List for <%= results[0].location.city %></h1>
+    <h1>Bucket List for <%= city[0].formatted_address %></h1>
     <ul class="visit-here-list">
       <% favorites.forEach( attraction => { %>
       <li class="bucket-list-item">
         <h3><%= attraction.name %></h3>
         <form class="delete-favorite" action="/explore/favorites/<%= attraction._id %>?_method=DELETE" method="post">
-          <input type="hidden" name="location" value=" <%= results[0].location.city %>">
+          <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
           <input type="submit" value="Delete">
         </form>
       </li>
       <% }) %>
     </ul>
     <form action="/maps" method="GET">
-      <input type="hidden" name="lat" value=" <%= results[0].location.coordinate.latitude %>">
-      <input type="hidden" name="lng" value=" <%= results[0].location.coordinate.longitude %>">
+      <input type="hidden" name="lat" value=" <%= city[0].geometry.location.lat %>">
+      <input type="hidden" name="lng" value=" <%= city[0].geometry.location.lng %>">
       <% for ( let i = 0; i < favorites.length; i++ ) { %>
         <input type="hidden" name='marker[<%= favorites[i].name %>]' value='<%= favorites[i].latitude %>,<%= favorites[i].longitude %>'>
       <% } %>
       <input type="submit" value="See my trip!">
     </form>
   </div>
-  <h1>Top Attractions in <%= results[0].location.city %></h1>
+  <h1>Top Attractions in <%= city[0].formatted_address %></h1>
   <% results.forEach( result => { %>
     <div class="tourism">
       <h2><%= result.name %></h2>
@@ -49,10 +49,8 @@
         <img src="<%= result.image_url %>" alt="">
       </div>
       <form class="save-favorite" action="/explore/favorites" method="POST">
-          <input type="hidden" name="location" value=" <%= results[0].location.city %>">
+          <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
           <input type="hidden" name="favorite[name]" value="<%= result.name %>">
-          <input type="hidden" name="favorite[location]" value=" <%= result.location.city %>">
-          <input type="hidden" name="favorite[state]" value=" <%= result.location.state_code %>">
           <input type="hidden" name="favorite[latitude]" value="<%= result.location.coordinate.latitude %>">
           <input type="hidden" name="favorite[longitude]" value="<%= result.location.coordinate.longitude %>">
           <input type="hidden" name="favorite[snip]" value="<%= result.snippet_text %>">
