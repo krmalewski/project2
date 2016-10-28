@@ -3,6 +3,7 @@ const router = require('express').Router();
 
 const yelpService = require('../services/yelp');
 const dbService = require('../models/favorites');
+const mapService = require('../services/maps');
 
 // Set up our routes
 router.get('/', yelpService.keepCity, yelpService.initialSearch, dbService.getFavorites, (req, res) => {
@@ -18,9 +19,9 @@ router.get('/', yelpService.keepCity, yelpService.initialSearch, dbService.getFa
 // });
 
 
-router.post('/favorites', yelpService.getCity, dbService.saveFavorite, (req, res) => {
-  const city = res.getcity;
-  res.redirect(`/explore?location=${city}`);
+router.post('/favorites', mapService.postCity, dbService.saveFavorite, (req, res) => {
+  const city = res.postcity;
+  res.redirect(`/findcity?location=${city}`);
 });
 
 router.delete('/favorites/:id', yelpService.getCity, dbService.deleteFavorites, (req, res) => {

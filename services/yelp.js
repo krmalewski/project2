@@ -40,10 +40,13 @@ function initialSearch(req, res, next) {
   const httpMethod = 'GET';
 
   const cityString = req.query.location;
-  const array = cityString.split(',');
-  const indexTwo = array[1].trim();
-  let city = `${array[0]}+${indexTwo}`;
-  console.log(city);
+  const array = cityString.split(' ');
+  let city = array[0];
+  for ( let i = 1; i < array.length; i++ ) {
+    let newWord = array[i].trim();
+    city += `+${newWord}`;
+  }
+
   // Set parameters
   const userParams = {
     location: city,
