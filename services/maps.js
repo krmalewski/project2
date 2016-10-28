@@ -14,6 +14,7 @@ function autocompleteCity(req, res, next) {
     let newWord = array[i].trim();
     city += `+${newWord}`;
   }
+  console.log(city);
 
   fetch(`${API_URL}address=${city}&key=${API_KEY}`)
   .then(r => r.json())

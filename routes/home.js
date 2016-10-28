@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/findcity', mapService.autocompleteCity, yelpService.initialSearch, dbService.getFavorites, (req, res) => {
+  console.log(res.city);
   res.render('explore', {
     city: res.city,
     results: res.attractions,
