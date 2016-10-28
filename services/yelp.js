@@ -101,7 +101,6 @@ function searchAttractions(req, res, next) {
 
   // Set the require parameters here
   const requiredParams = {
-    sort: '2',
     oauth_consumer_key: consumerKey,
     oauth_token: oauthToken,
     oauth_nonce: n(),

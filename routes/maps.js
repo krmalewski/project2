@@ -1,14 +1,21 @@
 // create a route handler
 const router = require('express').Router();
 
-const mapService = require('../services/maps');
+const mapModel = require('../models/maps');
 
 
 // Set up our routes
-router.get('/', mapService.buildMap, (req, res) => {
+router.get('/', mapModel.buildMap, (req, res) => {
   res.render('maps', {
-    map: res.map,
+    lat: res.lat,
+    lng: res.lng,
   });
 });
+
+
+// router.get('/', mapModel.buildMap, (req, res) => {
+//   res.send(res.lng);
+// });
+
 
 module.exports = router;

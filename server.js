@@ -18,15 +18,16 @@ const mapRoute        = require('./routes/maps');
 const app             = express();
 const PORT            = process.argv[2] || process.env.PORT || 3000;
 
+// set default templating engine
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
 // set up logger so that we can see what is happening
 app.use(logger('dev'));
 
 // set static assets path
 app.use(express.static(path.join(__dirname, 'public')));
 
-// set default templating engine
-app.set('view engine', 'ejs');
-app.set('views', 'views');
 
 // middleware to receive form inputs
 app.use(bodyParser.urlencoded({ extended: true }));

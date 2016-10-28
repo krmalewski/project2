@@ -14,7 +14,7 @@
     <input type="submit" value="Search">
   </form>
   <div id="bucket-list">
-    <h1>Bucket List for <%= results[0].location.city %>, <%= results[0].location.state_code %></h1>
+    <h1>Bucket List for <%= results[0].location.city %></h1>
     <ul class="visit-here-list">
       <% favorites.forEach( attraction => { %>
       <li class="bucket-list-item">
@@ -26,8 +26,16 @@
       </li>
       <% }) %>
     </ul>
+    <form action="/maps" method="GET">
+      <input type="hidden" name="lat" value=" <%= results[0].location.coordinate.latitude %>">
+      <input type="hidden" name="lng" value=" <%= results[0].location.coordinate.longitude %>">
+      <% for ( let i = 0; i < favorites.length; i++ ) { %>
+        <input type="hidden" name='marker[<%= favorites[i].name %>]' value='<%= favorites[i].latitude %>,<%= favorites[i].longitude %>'>
+      <% } %>
+      <input type="submit" value="See my trip!">
+    </form>
   </div>
-  <h1>Top Attractions in <%= results[0].location.city %>, <%= results[0].location.state_code %></h1>
+  <h1>Top Attractions in <%= results[0].location.city %></h1>
   <% results.forEach( result => { %>
     <div class="tourism">
       <h2><%= result.name %></h2>

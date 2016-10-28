@@ -14,7 +14,7 @@
     <input type="submit" value="Search">
   </form>
   <div id="bucket-list">
-    <h1>Bucket List for <%= city %>, <%= places[0].location.state_code %></h1>
+    <h1>Bucket List for <%= city %></h1>
     <ul class="visit-here-list">
       <% favorites.forEach( attraction => { %>
       <li class="bucket-list-item">
@@ -46,7 +46,6 @@
           <input type="hidden" name="location" value=" <%= city %>">
           <input type="hidden" name="favorite[name]" value="<%= place.name %>">
           <input type="hidden" name="favorite[location]" value=" <%= place.location.city  %>">
-          <input type="hidden" name="favorite[state]" value=" <%= place.location.state_code %>">
           <input type="hidden" name="favorite[latitude]" value="<%= place.location.coordinate.latitude %>">
           <input type="hidden" name="favorite[longitude]" value="<%= place.location.coordinate.longitude %>">
           <input type="hidden" name="favorite[snip]" value="<%= place.snippet_text %>">
