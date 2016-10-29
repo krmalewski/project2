@@ -1,21 +1,24 @@
 // create a route handler
 const router = require('express').Router();
 
-const mapModel = require('../models/maps');
-
+const mapServices = require('../services/maps');
+const dbService = require('../models/favorites');
 
 // Set up our routes
-router.get('/', mapModel.buildMap, (req, res) => {
-  res.render('maps', {
-    lat: res.lat,
-    lng: res.lng,
-  });
-});
-
-
-// router.get('/', mapModel.buildMap, (req, res) => {
-//   res.send(res.lng);
+// router.get('/', mapServices.getCenter, dbService.getFavorites, (req, res) => {
+//   console.log(res.center.lat);
+//   console.log(res.center.lng);
+//   res.json(res.favorite);
 // });
+
+
+router.get('/', mapServices.getCenter, dbService.getFavorites, (req, res) => {
+  res.render('maps', {
+    favorite: res.favorite,
+    lat: res.center.lat,
+    lng: res.center.lng,
+  })
+});
 
 
 module.exports = router;

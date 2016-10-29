@@ -8,11 +8,18 @@ https://maps.googleapis.com/maps/api/geocode/json?address=Dublin+Ireland&Ykey=AI
 
 function autocompleteCity(req, res, next) {
   const cityString = req.query.location;
-  const array = cityString.split(' ');
-  let city = array[0];
+  console.log(cityString)
+  const array = cityString.split(',');
+  console.log(array)
+  // let city = array[0];
+  // let secondWord = array[1].trim();
+  // if (secondWord.charAt(secondWord.length) === ',') {
+  //   secondWord = secondWord.slice(0, -1)
+  // }
+  let city = array[0].trim();
   for ( let i = 1; i < array.length; i++ ) {
-    let newWord = array[i].trim();
-    city += `+${newWord}`;
+    const word = array[i].trim();
+    city += `+${word}`;
   }
   console.log(city);
 
@@ -36,7 +43,18 @@ function postCity(req, res, next) {
   next();
 };
 
+
+function getCenter(req, res, next) {
+  const center = {
+    lat: req.query.lat,
+    lng: req.query.lng,
+  }
+  res.center = center;
+  next();
+}
+
 module.exports = {
   autocompleteCity,
   postCity,
+  getCenter,
 };

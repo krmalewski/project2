@@ -18,16 +18,32 @@
   </div>
   <script>
     function initMap() {
-      const center = { lat: <%= lat %>, lng: <%= lng %> };
+      const center = { lat: <%= lat %>, lng: <%= lng %>};
 
       const map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
+          zoom: 12,
           center: center,
        });
-      const marker =  new google.maps.Marker({
-        position: center,
-        map: map,
-      });
+
+      const array = [];
+      <% for (let i = 0; i < favorite.length; i++ ) { %>
+        for (let j = 0; j < 1; j++) {
+          let innerarray = [];
+          innerarray.push('<%= favorite[i].name %>');
+          innerarray.push('<%= favorite[i].latitude %>');
+          innerarray.push('<%= favorite[i].longitude %>');
+          array.push(innerarray);
+        }
+      <% } %>
+
+      for (let i = 0; i < array.length; i++) {
+        var position = new google.maps.LatLng(array[i][1], array[i][2]);
+        marker = new google.maps.Marker({
+          position: position,
+          map: map,
+        });
+
+      }
     }
   </script>
   <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA09kvA9vyvsfp5YwCTMycQ8DUMP5Pzbfo&callback=initMap'></script>

@@ -29,9 +29,6 @@
     <form action="/maps" method="GET">
       <input type="hidden" name="lat" value=" <%= city[0].geometry.location.lat %>">
       <input type="hidden" name="lng" value=" <%= city[0].geometry.location.lng %>">
-      <% for ( let i = 0; i < favorites.length; i++ ) { %>
-        <input type="hidden" name='marker[<%= favorites[i].name %>]' value='<%= favorites[i].latitude %>,<%= favorites[i].longitude %>'>
-      <% } %>
       <input type="submit" value="See my trip!">
     </form>
   </div>
