@@ -21,7 +21,7 @@
       const center = { lat: <%= lat %>, lng: <%= lng %>};
 
       const map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
+          zoom: 11,
           center: center,
        });
 
@@ -36,11 +36,16 @@
         }
       <% } %>
 
+      const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      let labelIndex = 0;
+
       for (let i = 0; i < array.length; i++) {
         var position = new google.maps.LatLng(array[i][1], array[i][2]);
         marker = new google.maps.Marker({
           position: position,
           map: map,
+          title: array[i][0],
+          label: labels[i],
         });
 
       }
