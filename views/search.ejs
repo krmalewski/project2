@@ -28,6 +28,7 @@
       </li>
       <% }) %>
       <form action="/maps" method="GET">
+        <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
         <input type="hidden" name="lat" value=" <%= city[0].geometry.location.lat %>">
         <input type="hidden" name="lng" value=" <%= city[0].geometry.location.lng %>">
         <input type="submit" value="See my trip!">

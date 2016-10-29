@@ -105,20 +105,24 @@ function initialSearch(req, res, next) {
 function searchAttractions(req, res, next) {
   // The type of request
   const httpMethod = 'GET';
-  const find = req.query.term;
+  let find = req.query.term;
 
   // Using the autocomplete will give back a lengthy query
   // split it and save the first array item, most likely the strongest
   // search term for yelp
-  const foo = find.split(',');
-  const searchWord = foo[0];
-  console.log(searchWord);
 
-  // Set parameters
   const userParams = {
     location: req.query.location,
-    term: searchWord,
   };
+
+  // Set parameters
+  if (find) {
+    if (find.includes(',')) {
+      const foo = find.split(',');
+      find = foo[0];
+    }
+    userParams.term = find;
+  }
 
   // Set the require parameters here
   const requiredParams = {
