@@ -9,14 +9,6 @@ router.get('/', (req, res) => {
   res.render('index');
 });
 
-router.get('/findcity', mapService.autocompleteCity, yelpService.initialSearch, dbService.getFavorites, (req, res) => {
-  console.log(res.city);
-  res.render('explore', {
-    city: res.city,
-    results: res.attractions,
-    favorites: res.favorite || [],
-  });
-});
 
 // router.get('/findcity', mapService.autocompleteCity, yelpService.initialSearch, (req, res) => {
 //   res.json(res.city);

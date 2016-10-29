@@ -19,15 +19,15 @@ router.get('/', mapService.autocompleteCity, yelpService.searchAttractions, dbSe
 //   res.json(res.name);
 // });
 
-router.delete('/favorites/:id', yelpService.getCity, dbService.deleteFavorites, (req, res) => {
-  const city = res.getcity;
-  res.redirect(`/search?location=${city}`);
-});
+// router.delete('/favorites/:id', yelpService.getCity, dbService.deleteFavorites, (req, res) => {
+//   const city = res.getcity;
+//   res.redirect(`/search?location=${city}`);
+// });
 
-router.post('/favorites', yelpService.getCity, dbService.saveFavorite, (req, res) => {
-  const city = res.getcity;
-  res.redirect(`/search?location=${city}`);
-});
+// router.post('/favorites', yelpService.getCity, dbService.saveFavorite, (req, res) => {
+//   const city = res.getcity;
+//   res.redirect(`/search?location=${city}`);
+// });
 
 
 module.exports = router;
