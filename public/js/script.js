@@ -1,10 +1,9 @@
-// Code referenced from https://developers.google.com/maps/documentation/javascript/adding-a-google-map
-function buildMap(req, res, next) {
-  const center = { lat: -25.363, lng: 131.044 };
+// console.log('hi');
 
-  const map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: center,
-  });
-  console.log('mapsssss')
-}
+// (() => {
+//   const array = ['/public/images/travel03.jpg'];
+
+//   $('#index-background').attr('src', array[0]);
+
+//   console.log('js connected')
+// })();

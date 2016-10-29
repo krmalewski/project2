@@ -20,7 +20,6 @@ indexRouter.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-
 // router.get('/findcity', mapService.autocompleteCity, yelpService.initialSearch, (req, res) => {
 //   res.json(res.city);
 // });
