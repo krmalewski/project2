@@ -60,6 +60,8 @@
           <input type="hidden" name="favorite[snip]" value="<%= place.snippet_text %>">
           <input type="hidden" name="favorite[address]" value="<%= place.location.display_address %>">
           <input type="hidden" name="favorite[phone]" value="<%= place.display_phone %>">
+           <input type="hidden" name="favorite[photo]" value="<%= place.image_url %>">
+          <input type="hidden" name="favorite[info]" value="<%= place.url %>">
           <input type="submit" value="Add to Bucket List!">
         </form>
       </div>

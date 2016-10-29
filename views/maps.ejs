@@ -16,14 +16,23 @@
   </form>
 
   <div id="activity-list">
-    <% favorite.forEach(place => { %>
+    <% const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; %>
+    <% let labelIndex = 0; %>
+    <% for (let i = 0; i < favorite.length; i++) { %>
       <div class="todo-list-item">
         <div class="todo-list-info">
-          <h3><%= place.name %></h3>
-          <p><%= place.snip %></p>
+          <h3><%= labels[i] %>. <%= favorite[i].name %></h3>
+          <p><%= favorite[i].snip %>
+            <a href="<%= favorite[i].info %>">more info...</a>
+          </p>
+          <p><%= favorite[i].address %></p>
+          <p><%= favorite[i].phone %></p>
+          <div class="todo-list-image">
+            <img src="<%= favorite[i].photo %>" alt="">
+          </div>
         </div>
       </div>
-    <% }) %>
+    <% } %>
   </div>
 
   <div id="activity-map">
