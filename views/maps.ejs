@@ -9,8 +9,20 @@
 </head>
 <body>
   <h1>Map</h1>
-  <div id="activity-list">
+  <form action="/search" method="GET">
+    <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
+    <input type="submit" value="Back to search">
+  </form>
 
+  <div id="activity-list">
+    <% favorite.forEach(place => { %>
+      <div class="todo-list-item">
+        <div class="todo-list-info">
+          <h3><%= place.name %></h3>
+          <p><%= place.snip %></p>
+        </div>
+      </div>
+    <% }) %>
   </div>
 
   <div id="activity-map">
@@ -47,7 +59,6 @@
           title: array[i][0],
           label: labels[i],
         });
-
       }
     }
   </script>

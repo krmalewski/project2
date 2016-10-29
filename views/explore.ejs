@@ -27,6 +27,7 @@
       <% }) %>
     </ul>
     <form action="/maps" method="GET">
+      <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
       <input type="hidden" name="lat" value=" <%= city[0].geometry.location.lat %>">
       <input type="hidden" name="lng" value=" <%= city[0].geometry.location.lng %>">
       <input type="submit" value="See my trip!">
@@ -53,6 +54,7 @@
           <input type="hidden" name="favorite[snip]" value="<%= result.snippet_text %>">
           <input type="hidden" name="favorite[address]" value="<%= result.location.display_address %>">
           <input type="hidden" name="favorite[phone]" value="<%= result.display_phone %>">
+          <input type="hidden" name="favorite[photo]" value="<%= result.image_url %>">
           <input type="submit" value="Add to Bucket List!">
         </form>
     </div>

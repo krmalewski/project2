@@ -12,12 +12,13 @@ const dbService = require('../models/favorites');
 // });
 
 
-router.get('/', mapServices.getCenter, dbService.getFavorites, (req, res) => {
+router.get('/', mapServices.autocompleteCity, mapServices.getCenter, dbService.getFavorites, (req, res) => {
   res.render('maps', {
     favorite: res.favorite,
     lat: res.center.lat,
     lng: res.center.lng,
-  })
+    city: res.city,
+  });
 });
 
 
