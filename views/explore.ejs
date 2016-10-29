@@ -68,7 +68,15 @@
   // http://stackoverflow.com/questions/13689705/how-to-add-google-maps-autocomplete-search-box
   function makeAutocomplete() {
     const input = document.getElementById('autocomplete');
-    const autocomplete = new google.maps.places.Autocomplete(input);
+    // Setting the default bounds to the viewport of Miami will help make searchs
+    // more relevant for users
+    const defaultBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(<%= city[0].geometry.viewport.southwest.lat %>,<%= city[0].geometry.viewport.southwest.lng %>),
+      new google.maps.LatLng(<%= city[0].geometry.viewport.northeast.lat %>,<%= city[0].geometry.viewport.northeast.lng %>));
+    const options = {
+      bounds: defaultBounds,
+    }
+    const autocomplete = new google.maps.places.Autocomplete(input, options);
   }
   google.maps.event.addDomListener(window, 'load', makeAutocomplete);
   </script>

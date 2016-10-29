@@ -3,8 +3,6 @@ const fetch = require('node-fetch');
 const API_URL = 'https://maps.googleapis.com/maps/api/geocode/json?';
 const API_KEY = process.env.MAPS_KEY;
 
-const SEARCH_URL = 'https://maps.googleapis.com/maps/api/place/textsearch/json?'
-
 
 function autocompleteCity(req, res, next) {
   const cityString = req.query.location;
