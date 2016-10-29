@@ -2,15 +2,23 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Login</title>
+    <title>Log in</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Dosis" rel="stylesheet">
   </head>
   <body>
-    <h1>Login</h1>
-    <form class="" action="/auth" method="post">
-        <input type="text" name="user[username]" value="" placeholder="Username">
-        <input type="password" name="user[password]" value="" placeholder="Password">
-        <input type="submit" name="name" value="Log in">
-    </form>
-    <script type="text/javascript" src="/js/script.js"></script>
+    <div class='background'>
+      <img class="index-background" id="login-picture" src="/images/travel03.jpg" alt="">
+    </div>
+    <div id="login-container">
+      <h1>"Adventure is worthwhile".</h1>
+      <p>Aesop</p>
+      <form id="login-form" action="/auth" method="post">
+          <input type="text" name="user[username]" value="" placeholder="Username">
+          <input type="password" name="user[password]" value="" placeholder="Password">
+          <input type="submit" name="name" value="Log in">
+      </form>
+      <a href="/">Back to homepage.</a>
+    </div>
   </body>
 </html>
