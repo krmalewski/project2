@@ -1,17 +1,25 @@
-const { MongoClient } = require('mongodb');
 const { ObjectID } = require('mongodb');
+const { getDB }    = require('../lib/dbConnect.js');
 
-const dbConnection = 'mongodb://localhost:27017/yelp-search';
 
 // When we select an attraction from our explore.ejs page, this will
 // insert it into our favorites collection
 // Code adopted from itunes_crud_lab
 function saveFavorite(req, res, next) {
-  MongoClient.connect(dbConnection, (err, db) => {
-    if (err) return next(err);
+  // creating an empty object for the insertObj
+  const insertObj = {};
 
+  // copying all of req.body into insertObj
+  for (let key in req.body) {
+    insertObj[key] = req.body[key];
+  }
+
+  // Adding userId to insertObj
+  insertObj.favorite.userId = req.session.userId;
+
+  getDB().then((db) => {
     db.collection('favorites')
-    .insert(req.body.favorite, (insertErr, result) => {
+    .insert(insertObj.favorite, (insertErr, result) => {
       if (insertErr) return next(insertErr);
       res.saved = result;
       db.close();
@@ -27,10 +35,9 @@ function saveFavorite(req, res, next) {
 // Any data retrieved from the db will be savec and passed on in res.favorite
 // Code adopted from itunes_crud_lab
 function getFavorites(req, res, next) {
-  MongoClient.connect(dbConnection, (err, db) => {
-    if (err) return next(err);
+  getDB().then((db) => {
     db.collection('favorites')
-    .find({})
+    .find({ userId: { $eq: req.session.userId } })
     .toArray((arrayError, data) => {
       if (arrayError) return next(arrayError);
       res.favorite = data;
@@ -46,8 +53,7 @@ function getFavorites(req, res, next) {
 // id to the attraction the user selected to delete and remove it from the db
 // Code adopted from itunes_crud_lab
 function deleteFavorites(req, res, next) {
-  MongoClient.connect(dbConnection, (err, db) => {
-    if (err) return next(err);
+  getDB().then((db) => {
     db.collection('favorites')
     .findAndRemove({ _id: ObjectID(req.params.id) }, (removeErr, results) => {
       if (removeErr) return next(removeErr);

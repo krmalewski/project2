@@ -1,12 +1,23 @@
 // create a route handler
-const router = require('express').Router();
-const yelpService = require('../services/yelp');
-const mapService = require('../services/maps');
-const dbService = require('../models/favorites');
+const express = require('express');
+
+const indexRouter = express.Router();
 
 // Set up our routes
-router.get('/', (req, res) => {
+
+// This route serves as the homepage
+indexRouter.get('/', (req, res) => {
   res.render('index');
+});
+
+// This route serves your `/login` form
+indexRouter.get('/login', (req, res) => {
+  res.render('login');
+});
+
+// This route serves your `/signup` form
+indexRouter.get('/signup', (req, res) => {
+  res.render('signup');
 });
 
 
@@ -20,4 +31,4 @@ router.get('/', (req, res) => {
 //   res.redirect(`explore?location=${city}`);
 // });
 
-module.exports = router;
+module.exports = indexRouter;

@@ -3,36 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Log In</title>
+  <title>Home</title>
   <link rel="stylesheet" href="/css/main.css">
-   <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA09kvA9vyvsfp5YwCTMycQ8DUMP5Pzbfo&libraries=places'></script>
+
 </head>
 <body>
-  <h1>Log in here.</h1>
-  <form action="/explore" method="GET">
-    <input id="autocomplete" type="text" name="location" placeholder="City">
-    <input type="submit" value="Search">
-  </form>
-
-
-  <script>
-  // https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-hotelsearch
-  // some help from here as well! :
-  // http://stackoverflow.com/questions/13689705/how-to-add-google-maps-autocomplete-search-box
-  function makeAutocomplete() {
-    const input = document.getElementById('autocomplete');
-    const defaultBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(-90,-180),
-      new google.maps.LatLng(90,180));
-    const options = {
-      types: ['(cities)'],
-      bounds: defaultBounds,
-    };
-    console.log('heree')
-    const autocomplete = new google.maps.places.Autocomplete(input, options);
-  }
-  google.maps.event.addDomListener(window, 'load', makeAutocomplete);
-  </script>
-
+  <h1>Home</h1>
+    <header>
+      <nav>
+        <a href="/signup">Create a free account here.</a>
+        <a href="/login">Log In</a>
+      </nav>
+    </header>
 </body>
 </html>
