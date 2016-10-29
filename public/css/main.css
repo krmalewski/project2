@@ -3,3 +3,9 @@
   height: 400px;
   width: 400px;
 }
+
+input[type=text] {
+  width: 400px;
+
+  -webkit-appearance: none;
+}

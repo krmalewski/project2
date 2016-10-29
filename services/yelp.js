@@ -2,6 +2,11 @@
 /* eslint key-spacing: ["error", { align: "value" }] */
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
+const mapService = require('../services/maps');
+const SEARCH_URL = 'https://maps.googleapis.com/maps/api/place/textsearch/json?';
+const API_KEY = 'AIzaSyA09kvA9vyvsfp5YwCTMycQ8DUMP5Pzbfo';
+
+
 /* The following modules are needed for oAuth with Yelp's API */
 // and help from Samuel Na!
 const oauthSignature  = require('oauth-signature');
@@ -100,11 +105,30 @@ function initialSearch(req, res, next) {
 function searchAttractions(req, res, next) {
   // The type of request
   const httpMethod = 'GET';
+  const find = req.query.term;
+  console.log(find);
 
+  const foo = find.split(',');
+  console.log(foo);
+
+  const searchWord = foo[0];
+  console.log(searchWord);
+
+  function useMaps(word) {
+    fetch(`${SEARCH_URL}query=${word}&key=${API_KEY}`)
+    .then(r => r.json())
+    .then((result) => {
+      console.log(result);
+      return result.results[0].name;
+    });
+  }
+
+
+  console.log(useMaps(searchWord));
   // Set parameters
   const userParams = {
     location: req.query.location,
-    term: req.query.term,
+    term: searchWord,
   };
 
   // Set the require parameters here

@@ -3,7 +3,7 @@ const router = require('express').Router();
 
 const yelpService = require('../services/yelp');
 const dbService = require('../models/favorites');
-const mapService = require('../services/maps')
+const mapService = require('../services/maps');
 
 // Set up our routes
 
@@ -15,8 +15,8 @@ router.get('/', mapService.autocompleteCity, yelpService.searchAttractions, dbSe
   });
 });
 
-// router.get('/', mapService.autocompleteCity, yelpService.searchAttractions, dbService.getFavorites, (req, res) => {
-//   res.json(res.city);
+// router.get('/', mapService.getAttraction, (req, res) => {
+//   res.json(res.name);
 // });
 
 router.delete('/favorites/:id', yelpService.getCity, dbService.deleteFavorites, (req, res) => {

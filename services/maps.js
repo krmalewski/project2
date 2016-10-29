@@ -3,25 +3,18 @@ const fetch = require('node-fetch');
 const API_URL = 'https://maps.googleapis.com/maps/api/geocode/json?';
 const API_KEY = process.env.MAPS_KEY;
 
+const SEARCH_URL = 'https://maps.googleapis.com/maps/api/place/textsearch/json?'
 
-https://maps.googleapis.com/maps/api/geocode/json?address=Dublin+Ireland&Ykey=AIzaSyA09kvA9vyvsfp5YwCTMycQ8DUMP5Pzbfo
 
 function autocompleteCity(req, res, next) {
   const cityString = req.query.location;
-  console.log(cityString)
   const array = cityString.split(',');
-  console.log(array)
-  // let city = array[0];
-  // let secondWord = array[1].trim();
-  // if (secondWord.charAt(secondWord.length) === ',') {
-  //   secondWord = secondWord.slice(0, -1)
-  // }
+
   let city = array[0].trim();
   for ( let i = 1; i < array.length; i++ ) {
     const word = array[i].trim();
     city += `+${word}`;
   }
-  console.log(city);
 
   fetch(`${API_URL}address=${city}&key=${API_KEY}`)
   .then(r => r.json())
@@ -41,20 +34,38 @@ function postCity(req, res, next) {
   const indexTwo = array[1].trim();
   res.postcity = `${array[0]}+${indexTwo}`;
   next();
-};
+}
 
 
 function getCenter(req, res, next) {
   const center = {
     lat: req.query.lat,
     lng: req.query.lng,
-  }
+  };
   res.center = center;
   next();
+}
+
+function getAttraction(req, res, next) {
+  const find = req.query.term;
+  console.log(find);
+
+  fetch(`${SEARCH_URL}query=${find}&key=${API_KEY}`)
+ .then(r => r.json())
+  .then((result) => {
+    res.name = result.results[0].name;
+    console.log(res.name);
+    next();
+  })
+  .catch((err) => {
+    res.err = err;
+    next();
+  });
 }
 
 module.exports = {
   autocompleteCity,
   postCity,
   getCenter,
+  getAttraction,
 };
