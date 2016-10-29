@@ -46,26 +46,8 @@ function getCenter(req, res, next) {
   next();
 }
 
-function getAttraction(req, res, next) {
-  const find = req.query.term;
-  console.log(find);
-
-  fetch(`${SEARCH_URL}query=${find}&key=${API_KEY}`)
- .then(r => r.json())
-  .then((result) => {
-    res.name = result.results[0].name;
-    console.log(res.name);
-    next();
-  })
-  .catch((err) => {
-    res.err = err;
-    next();
-  });
-}
-
 module.exports = {
   autocompleteCity,
   postCity,
   getCenter,
-  getAttraction,
 };

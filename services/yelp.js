@@ -106,25 +106,14 @@ function searchAttractions(req, res, next) {
   // The type of request
   const httpMethod = 'GET';
   const find = req.query.term;
-  console.log(find);
 
+  // Using the autocomplete will give back a lengthy query
+  // split it and save the first array item, most likely the strongest
+  // search term for yelp
   const foo = find.split(',');
-  console.log(foo);
-
   const searchWord = foo[0];
   console.log(searchWord);
 
-  function useMaps(word) {
-    fetch(`${SEARCH_URL}query=${word}&key=${API_KEY}`)
-    .then(r => r.json())
-    .then((result) => {
-      console.log(result);
-      return result.results[0].name;
-    });
-  }
-
-
-  console.log(useMaps(searchWord));
   // Set parameters
   const userParams = {
     location: req.query.location,

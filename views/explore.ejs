@@ -5,7 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Trip Planner</title>
   <link rel="stylesheet" href="/css/main.css">
-  <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA09kvA9vyvsfp5YwCTMycQ8DUMP5Pzbfo&libraries=places'></script>
+  <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA09kvA9vyvsfp5YwCTMycQ8DUMP5Pzbfo&libraries=places'>
+  </script>
 </head>
 <body>
   <h1>Explore!</h1>
@@ -67,10 +68,7 @@
   // http://stackoverflow.com/questions/13689705/how-to-add-google-maps-autocomplete-search-box
   function makeAutocomplete() {
     const input = document.getElementById('autocomplete');
-    const options = {
-      types: ['establishment'],
-    };
-    const autocomplete = new google.maps.places.Autocomplete(input, options);
+    const autocomplete = new google.maps.places.Autocomplete(input);
   }
   google.maps.event.addDomListener(window, 'load', makeAutocomplete);
   </script>
