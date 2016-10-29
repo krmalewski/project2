@@ -10,7 +10,7 @@ const mapService = require('../services/maps');
 router.get('/', mapService.autocompleteCity, yelpService.searchAttractions, dbService.getFavorites, (req, res) => {
   res.render('search', {
     favorites: res.favorite || [],
-    places: res.search,
+    places: res.search || [],
     city: res.city,
   });
 });

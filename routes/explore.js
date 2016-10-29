@@ -22,7 +22,7 @@ router.get('/', mapService.autocompleteCity, yelpService.initialSearch, dbServic
   console.log(res.city);
   res.render('explore', {
     city: res.city,
-    results: res.attractions,
+    results: res.attractions || [],
     favorites: res.favorite || [],
   });
 });
