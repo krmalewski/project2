@@ -5,65 +5,94 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Trip Planner</title>
   <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Dosis" rel="stylesheet">
   <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA09kvA9vyvsfp5YwCTMycQ8DUMP5Pzbfo&libraries=places'>
   </script>
 </head>
 <body>
-  <h1>Explore!</h1>
-  <a href="/users/profile">Home</a>
-  <form action="/search" method="GET">
-    <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
-    <input type="text" id="autocomplete" name="term" placeholder="Search for attractions">
-    <input type="submit" value="Search">
-  </form>
-  <div id="bucket-list">
-    <h1>Bucket List for <%= city[0].formatted_address %></h1>
-    <ul class="visit-here-list">
-      <% favorites.forEach( attraction => { %>
-      <li class="bucket-list-item">
-        <h3><%= attraction.name %></h3>
-        <form class="delete-favorite" action="/explore/favorites/<%= attraction._id %>?_method=DELETE" method="post">
-          <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
-          <input type="submit" value="Delete">
-        </form>
-      </li>
-      <% }) %>
-    </ul>
-    <form action="/maps" method="GET">
+  <header id="explore-header">
+    <h1>Explore.</h1>
+    <div id="explore-header-links">
+      <a href="/users/profile">Home<span> | </span></a>
+      <form action="/auth?_method=DELETE" method="post">
+        <input type="submit" value=" Log out.">
+      </form>
+    </div>
+    <div id="explore-header-band"></div>
+  </header>
+
+  <div class="search-bar">
+    <form action="/search" method="GET">
       <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
-      <input type="hidden" name="lat" value=" <%= city[0].geometry.location.lat %>">
-      <input type="hidden" name="lng" value=" <%= city[0].geometry.location.lng %>">
-      <input type="submit" value="See my trip!">
+      <input type="text" id="autocomplete" name="term" placeholder="Search for attractions">
+      <input type="submit" value="Search">
     </form>
   </div>
-  <h1>Top Attractions in <%= city[0].formatted_address %></h1>
-  <% results.forEach( result => { %>
-    <div class="tourism">
-      <h2><%= result.name %></h2>
-      <p>Rating: <%= result.rating %> <img src="<%= result.rating_img_url_small %>" alt=""></p>
-      <p><%= result.snippet_text %>
-        <a href="<%= result.url %>">more info here</a>
-      </p>
-      <p>Address: <%= result.location.display_address %></p>
-      <p>Phone: <%= result.display_phone %></p>
-      <div id="attraction-image">
-        <img src="<%= result.image_url %>" alt="">
-      </div>
-      <form class="save-favorite" action="/explore/favorites" method="POST">
-          <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
-          <input type="hidden" name="favorite[name]" value="<%= result.name %>">
-          <input type="hidden" name="favorite[latitude]" value="<%= result.location.coordinate.latitude %>">
-          <input type="hidden" name="favorite[longitude]" value="<%= result.location.coordinate.longitude %>">
-          <input type="hidden" name="favorite[snip]" value="<%= result.snippet_text %>">
-          <input type="hidden" name="favorite[address]" value="<%= result.location.display_address %>">
-          <input type="hidden" name="favorite[phone]" value="<%= result.display_phone %>">
-          <input type="hidden" name="favorite[photo]" value="<%= result.image_url %>">
-          <input type="hidden" name="favorite[info]" value="<%= result.url %>">
-          <input type="submit" value="Add to Bucket List!">
-        </form>
-    </div>
-  <% }) %>
 
+  <div class='search-results-container'>
+    <div id="bucket-list">
+      <h1>Bucket List for <%= city[0].formatted_address %></h1>
+      <ul class="visit-here-list">
+        <% favorites.forEach( attraction => { %>
+        <li class="bucket-list-item">
+          <h3><%= attraction.name %></h3>
+          <form class="delete-favorite" action="/explore/favorites/<%= attraction._id %>?_method=DELETE" method="post">
+            <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
+            <input type="submit" value="Delete">
+          </form>
+        </li>
+        <% }) %>
+      </ul>
+      <form action="/maps" method="GET">
+        <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
+        <input type="hidden" name="lat" value=" <%= city[0].geometry.location.lat %>">
+        <input type="hidden" name="lng" value=" <%= city[0].geometry.location.lng %>">
+        <input type="submit" value="See my trip!">
+      </form>
+    </div>
+
+    <div class='yelp-results'>
+      <h1>Top Attractions in <%= city[0].formatted_address %></h1>
+      <% results.forEach( result => { %>
+        <div class="tourism">
+          <div class="yelp-info-header">
+            <h2><%= result.name %></h2>
+            <form class="save-favorite" action="/explore/favorites" method="POST">
+              <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
+              <input type="hidden" name="favorite[name]" value="<%= result.name %>">
+              <input type="hidden" name="favorite[latitude]" value="<%= result.location.coordinate.latitude %>">
+              <input type="hidden" name="favorite[longitude]" value="<%= result.location.coordinate.longitude %>">
+              <input type="hidden" name="favorite[snip]" value="<%= result.snippet_text %>">
+              <input type="hidden" name="favorite[address]" value="<%= result.location.display_address %>">
+              <input type="hidden" name="favorite[phone]" value="<%= result.display_phone %>">
+              <input type="hidden" name="favorite[photo]" value="<%= result.image_url %>">
+              <input type="hidden" name="favorite[info]" value="<%= result.url %>">
+              <input type="submit" value="Add to Bucket List!">
+            </form>
+          </div>
+          <div class="yelp-info-content">
+            <div class="yelp-info">
+              <p>Rating: <%= result.rating %> <img src="<%= result.rating_img_url_small %>" alt=""></p>
+              <p><%= result.snippet_text %>
+                <a href="<%= result.url %>">more info here</a>
+              </p>
+              <p>Address: <%= result.location.display_address %></p>
+              <p>Phone: <%= result.display_phone %></p>
+            </div>
+            <div id="attraction-image">
+              <img src="<%= result.image_url %>" alt="">
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+    <footer>
+      <p>"I haven't been everywhere, but it's on my list.
+       -Susan Sontag</p>
+    </footer>
     <script>
   // https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-hotelsearch
   // some help from here as well! :
