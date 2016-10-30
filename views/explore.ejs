@@ -52,40 +52,40 @@
       </form>
     </div>
 
-    <div class='yelp-results'>
+    <div class="yelp-results-container">
       <h1>Top Attractions in <%= city[0].formatted_address %></h1>
-      <% results.forEach( result => { %>
-        <div class="tourism">
-          <div class="yelp-info-header">
-            <h2><%= result.name %></h2>
-            <form class="save-favorite" action="/explore/favorites" method="POST">
-              <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
-              <input type="hidden" name="favorite[name]" value="<%= result.name %>">
-              <input type="hidden" name="favorite[latitude]" value="<%= result.location.coordinate.latitude %>">
-              <input type="hidden" name="favorite[longitude]" value="<%= result.location.coordinate.longitude %>">
-              <input type="hidden" name="favorite[snip]" value="<%= result.snippet_text %>">
-              <input type="hidden" name="favorite[address]" value="<%= result.location.display_address %>">
-              <input type="hidden" name="favorite[phone]" value="<%= result.display_phone %>">
-              <input type="hidden" name="favorite[photo]" value="<%= result.image_url %>">
-              <input type="hidden" name="favorite[info]" value="<%= result.url %>">
-              <input type="submit" value="Add to Bucket List!">
-            </form>
-          </div>
-          <div class="yelp-info-content">
-            <div class="yelp-info">
-              <p>Rating: <%= result.rating %> <img src="<%= result.rating_img_url_small %>" alt=""></p>
-              <p><%= result.snippet_text %>
-                <a href="<%= result.url %>">more info here</a>
-              </p>
-              <p>Address: <%= result.location.display_address %></p>
-              <p>Phone: <%= result.display_phone %></p>
+      <div class='yelp-results'>
+        <% results.forEach( result => { %>
+          <div class="tourism">
+            <div class="yelp-info-content">
+              <div class="yelp-info">
+                <h2><%= result.name %></h2>
+                <p id="rating">Rating: <%= result.rating %> <img src="<%= result.rating_img_url_small %>" alt=""></p>
+                <p><%= result.snippet_text %>
+                  <a href="<%= result.url %>">more info here</a>
+                </p>
+                <p>Address: <%= result.location.display_address %></p>
+                <p>Phone: <%= result.display_phone %></p>
+              </div>
+              <div class="attraction-image">
+                <img src="<%= result.image_url %>" alt="">
+                <form class="save-favorite" action="/explore/favorites" method="POST">
+                  <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
+                  <input type="hidden" name="favorite[name]" value="<%= result.name %>">
+                  <input type="hidden" name="favorite[latitude]" value="<%= result.location.coordinate.latitude %>">
+                  <input type="hidden" name="favorite[longitude]" value="<%= result.location.coordinate.longitude %>">
+                  <input type="hidden" name="favorite[snip]" value="<%= result.snippet_text %>">
+                  <input type="hidden" name="favorite[address]" value="<%= result.location.display_address %>">
+                  <input type="hidden" name="favorite[phone]" value="<%= result.display_phone %>">
+                  <input type="hidden" name="favorite[photo]" value="<%= result.image_url %>">
+                  <input type="hidden" name="favorite[info]" value="<%= result.url %>">
+                  <input type="submit" value="Add to Bucket List!">
+                </form>
+              </div>
             </div>
-            <div id="attraction-image">
-              <img src="<%= result.image_url %>" alt="">
-            </div>
           </div>
-        </div>
-      <% }) %>
+        <% }) %>
+      </div>
     </div>
   </div>
 

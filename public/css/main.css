@@ -389,39 +389,33 @@ body {
   align-items: flex-start;
 }
 
-.tourism {
-  border: 1px solid black;
+.yelp-results-container {
+  font-family: 'Archivo Narrow', sans-serif;
+  margin: 20px;
+}
+
+.yelp-results-container h1 {
+  margin: 0 0 20px 20px;
 }
 
 .yelp-results {
   font-family: 'Archivo Narrow', sans-serif;
   margin: 20px;
+  height: 350px;
+  overflow: scroll;
 }
 
-.yelp-results h1 {
-  margin-top: 0;
+.tourism {
+  border-bottom: 1px solid black;
+  padding: 10px 0;
 }
 
 .yelp-info-header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
-
-.yelp-info-header h2 {
-  margin-bottom: 0;
-}
-
-.yelp-info-header input[type=submit] {
-  background: none;
-  border: none;
-  padding: 0;
-  font-family: 'Archivo Narrow', sans-serif;
-  font-size: 20px;
-  display: inline-block;
-}
-
 
 .yelp-info-content {
   display: flex;
@@ -431,7 +425,45 @@ body {
 }
 
 .yelp-info {
-  width: 70%;
+  width: 80%;
+  padding-right: 30px;
+}
+
+.yelp-info h2{
+  margin-bottom: 0;
+}
+
+#rating {
+  margin-top: 0;
+}
+
+.attraction-image {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.attraction-image img {
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+.attraction-image input[type=submit] {
+  padding: 6px 11px;
+  border: none;
+  font-size: 17px;
+  background-color: #D9D1C2
+  border-radius: 5px;
+  padding-bottom: 10px;
+  font-family: 'Archivo Narrow', sans-serif;
+  display: inline-block;
+  -webkit-appearance: none;
+}
+
+.attraction-image input[type=submit]:hover {
+  background-color: #ada79b;
+  -webkit-appearance: none;
 }
 
 input[type=text] {
