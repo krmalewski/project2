@@ -6,7 +6,7 @@
   <title>Trip Planner</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/main.css">
-  <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Dosis" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Dosis|Open+Sans+Condensed:300" rel="stylesheet">
   <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA09kvA9vyvsfp5YwCTMycQ8DUMP5Pzbfo&libraries=places'>
   </script>
 </head>
@@ -32,24 +32,29 @@
 
   <div class='search-results-container'>
     <div id="bucket-list">
-      <h1>Bucket List for <%= city[0].formatted_address %></h1>
-      <ul class="visit-here-list">
-        <% favorites.forEach( attraction => { %>
-        <li class="bucket-list-item">
-          <h3><%= attraction.name %></h3>
-          <form class="delete-favorite" action="/explore/favorites/<%= attraction._id %>?_method=DELETE" method="post">
-            <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
-            <input type="submit" value="Delete">
-          </form>
-        </li>
-        <% }) %>
-      </ul>
-      <form action="/maps" method="GET">
-        <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
-        <input type="hidden" name="lat" value=" <%= city[0].geometry.location.lat %>">
-        <input type="hidden" name="lng" value=" <%= city[0].geometry.location.lng %>">
-        <input type="submit" value="See my trip!">
-      </form>
+      <h1>Bucket List</h1>
+      <h2><%= city[0].formatted_address %></h2>
+      <div id="list-item-container">
+        <ul class="visit-here-list">
+          <% favorites.forEach( attraction => { %>
+          <li class="bucket-list-item">
+            <h3><%= attraction.name %></h3>
+            <form class="delete-favorite" action="/explore/favorites/<%= attraction._id %>?_method=DELETE" method="post">
+              <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
+              <input type="submit" value="Remove">
+            </form>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+      <div id="see-my-trip">
+        <form action="/maps" method="GET">
+          <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
+          <input type="hidden" name="lat" value=" <%= city[0].geometry.location.lat %>">
+          <input type="hidden" name="lng" value=" <%= city[0].geometry.location.lng %>">
+          <input type="submit" value="See my trip!">
+        </form>
+      </div>
     </div>
 
     <div class="yelp-results-container">
@@ -64,8 +69,8 @@
                 <p><%= result.snippet_text %>
                   <a href="<%= result.url %>">more info here</a>
                 </p>
-                <p>Address: <%= result.location.display_address %></p>
-                <p>Phone: <%= result.display_phone %></p>
+                <p><span>Address:</span> <%= result.location.display_address %></p>
+                <p><span>Phone:</span> <%= result.display_phone %></p>
               </div>
               <div class="attraction-image">
                 <img src="<%= result.image_url %>" alt="">

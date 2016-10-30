@@ -366,8 +366,7 @@ body {
   padding: 6px 11px;
   border: none;
   font-size: 14px;
-  background-color: #D9D1C2
-  color: white;
+  background-color: #D9D1C2;
   border-radius: 5px;
   -webkit-appearance: none;
 }
@@ -410,6 +409,15 @@ body {
   padding: 10px 0;
 }
 
+.tourism p {
+  font-family: helvetica;
+}
+
+.tourism p span {
+  color: #1A3C54;
+  font-weight: bold;
+}
+
 .yelp-info-header {
   display: flex;
   flex-direction: row;
@@ -447,15 +455,16 @@ body {
 .attraction-image img {
   width: 90%;
   margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 .attraction-image input[type=submit] {
-  padding: 6px 11px;
+  padding: 4px 11px;
   border: none;
   font-size: 17px;
-  background-color: #D9D1C2
-  border-radius: 5px;
-  padding-bottom: 10px;
+  background-color: #D9D1C2;
+  border-radius: 8px;
+  margin-bottom: 5px;
   font-family: 'Archivo Narrow', sans-serif;
   display: inline-block;
   -webkit-appearance: none;
@@ -465,6 +474,102 @@ body {
   background-color: #ada79b;
   -webkit-appearance: none;
 }
+
+footer {
+  background-color: #316F9C;
+  color: white;
+  font-family: helvetica;
+  text-align: center;
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer p {
+  margin: 0;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 18px;
+}
+
+#bucket-list {
+  font-family: 'Archivo Narrow', sans-serif;
+  width: 30vw;
+  height: 430px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 20px 20px 0 0;
+  background-image: url('/images/map.png');
+  box-shadow: 5px 5px 5px lightgray;
+}
+#bucket-list h1 {
+  margin: 0;
+}
+
+#bucket-list h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+#bucket-list img {
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.visit-here-list {
+  padding-left: 7px;
+  list-style: none;
+}
+
+#list-item-container {
+  overflow: scroll;
+  width: 100%;
+  height: 80%;
+}
+
+#list-item-container ul {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bucket-list-item {
+  margin-top: 0;
+}
+
+.bucket-list-item h3 {
+  margin-bottom: 5px;
+}
+
+.delete-favorite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#see-my-trip input[type=submit] {
+  font-size: 20px;
+  padding: 5px;
+}
+
+#see-my-trip input[type=sumbit]:hover {
+  background-color: pink;
+}
+
+
+/*#see-my-trip input[type=submit]:hover {
+  background-color: #B0B0B0;
+  font-size: 20px;
+  padding: 5px;
+}*/
 
 input[type=text] {
   width: 400px;
