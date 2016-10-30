@@ -270,7 +270,7 @@ body {
   color: #636266;
 }
 
-#explore-header {
+.explore-header {
   background-color: #316F9C;
   width: 100%;
   height: 100px;
@@ -280,14 +280,14 @@ body {
   top: 0;
 }
 
-#explore-header h1 {
+.explore-header h1 {
   font-size: 70px;
   margin: 0;
   padding: 15px 0 0 15px;
   display: inline-block;
 }
 
-#explore-header-links {
+.explore-header-links {
   float: right;
   display: flex;
   flex-direction: row;
@@ -295,7 +295,7 @@ body {
   margin-top: 70px;
 }
 
-#explore-header-links a {
+.explore-header-links a {
   text-decoration: none;
   color: black;
   font-family: 'Archivo Narrow', sans-serif;
@@ -303,15 +303,15 @@ body {
   display: inline-block;
 }
 
-#explore-header-links span {
+.explore-header-links span {
   color: black;
 }
 
-#explore-header-links a:hover {
+.explore-header-links a:hover {
   color: #F2E9D8;
 }
 
-#explore-header-links input[type=submit] {
+.explore-header-links input[type=submit] {
   float: right;
   margin-right: 20px;
   background: none;
@@ -322,11 +322,11 @@ body {
   display: inline-block;
 }
 
-#explore-header-links input[type=submit]:hover {
+.explore-header-links input[type=submit]:hover {
   color: #F2E9D8;
 }
 
-#explore-header-band {
+.explore-header-band {
   background-color: #255678;
   width: 100%;
   height: 15px;
@@ -564,12 +564,91 @@ footer p {
   background-color: pink;
 }
 
+#edit {
+  margin-top: 125px;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+/*  align-items: center;*/
+  font-family: 'Archivo Narrow', sans-serif;
+}
 
-/*#see-my-trip input[type=submit]:hover {
-  background-color: #B0B0B0;
+#edit input[type=submit] {
+  background: none;
+  border: none;
+  font-family: helvetica;
   font-size: 20px;
-  padding: 5px;
-}*/
+}
+
+#edit input[type=submit]:hover {
+  color: #636363;
+}
+
+#maps-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+#activity-list {
+  margin:0 10px 20px 10px;
+  width: 52vw;
+  overflow: scroll;
+  height: 400px;
+}
+
+.todo-list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.todo-list-info {
+  width: 70%;
+  font-family: 'Archivo Narrow', sans-serif;
+}
+
+.todo-list-info h2 {
+  margin: 0 0 10px 0;
+}
+
+.todo-list-info p {
+  font-family: helvetica;
+}
+
+.todo-list-info span {
+  color: #316F9C;
+}
+
+.todo-list-info p span {
+  font-weight: bold;
+}
+
+.todo-list-image {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo-list-image img {
+  width: 60%;
+  border-radius: 5px;
+}
+
+#activity-map {
+  margin: 0 10px 20px 10px;
+  width: 42vw;
+  height: 400px;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
 
 input[type=text] {
   width: 400px;

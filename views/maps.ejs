@@ -5,42 +5,59 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Map</title>
   <link rel="stylesheet" href="/css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Dosis|Open+Sans+Condensed:300" rel="stylesheet">
 
 </head>
 <body>
-  <header>
+  <header class="explore-header">
     <h1>Escape.</h1>
-    <a href="/users/profile">Home</a>
-
+    <div class="explore-header-links">
+      <a href="/users/profile">Home<span> | </span></a>
+      <form action="/auth?_method=DELETE" method="post">
+        <input type="submit" value=" Log out.">
+      </form>
+    </div>
+    <div class="explore-header-band"></div>
   </header>
-  <form action="/explore" method="GET">
-    <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
-    <input type="submit" value="Go back and edit my plans">
-  </form>
 
-  <div id="activity-list">
-    <% const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; %>
-    <% let labelIndex = 0; %>
-    <% for (let i = 0; i < favorite.length; i++) { %>
-      <div class="todo-list-item">
-        <div class="todo-list-info">
-          <h3><%= labels[i] %>. <%= favorite[i].name %></h3>
-          <p><%= favorite[i].snip %>
-            <a href="<%= favorite[i].info %>">more info...</a>
-          </p>
-          <p><%= favorite[i].address %></p>
-          <p><%= favorite[i].phone %></p>
+  <div id="edit">
+    <form action="/explore" method="GET">
+      <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
+      <input type="submit" value="Go back and edit my plans.">
+    </form>
+  </div>
+
+  <div id="maps-container">
+    <div id="activity-list">
+      <% const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; %>
+      <% let labelIndex = 0; %>
+      <% for (let i = 0; i < favorite.length; i++) { %>
+        <div class="todo-list-item">
+          <div class="todo-list-info">
+            <h2><span><%= labels[i] %>. </span><%= favorite[i].name %></h2>
+            <p><%= favorite[i].snip %>
+              <a href="<%= favorite[i].info %>">more info...</a>
+            </p>
+            <p><span>Address: </span><%= favorite[i].address %></p>
+            <p><span>Phone: </span><%= favorite[i].phone %></p>
+          </div>
           <div class="todo-list-image">
             <img src="<%= favorite[i].photo %>" alt="">
           </div>
         </div>
-      </div>
-    <% } %>
+      <% } %>
+    </div>
+
+    <div id="activity-map">
+      <div id="map"></div>
+    </div>
   </div>
 
-  <div id="activity-map">
-    <div id="map"></div>
-  </div>
+  <footer>
+    <p>"I haven't been everywhere, but it's on my list.
+       -Susan Sontag</p>
+  </footer>
+
   <script>
     function initMap() {
       const center = { lat: <%= lat %>, lng: <%= lng %>};
