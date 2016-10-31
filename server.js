@@ -2,7 +2,7 @@
 /* eslint key-spacing: ["error", { align: "value" }] */
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
-const dotEnv          = require('dotenv').config({silent: true});
+const dotEnv          = require('dotenv').config({ silent: true });
 const express         = require('express');
 const logger          = require('morgan');
 const bodyParser      = require('body-parser');
@@ -10,8 +10,6 @@ const methodOverride  = require('method-override');
 const path            = require('path');
 const session         = require('express-session');
 const cookieParser    = require('cookie-parser');
-
-
 
 // Set up routes
 const homeRoute       = require('./routes/home');
@@ -22,7 +20,7 @@ const searchRoute     = require('./routes/search');
 const mapRoute        = require('./routes/maps');
 
 const app             = express();
-const PORT            = process.argv[2] || process.env.PORT || 3000;
+const PORT            = process.env.PORT || 3000;
 const SECRET          = 'tacos3000';
 
 // set default templating engine
