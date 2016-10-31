@@ -416,6 +416,7 @@ body {
 
 .yelp-results-container h1 {
   margin: 0 0 20px 20px;
+  display: inline-block;
 }
 
 .yelp-results {

@@ -1,3 +1,4 @@
+/* eslint no-param-reassign: ["error", { "props": false }] */
 const fetch = require('node-fetch');
 
 const API_URL = 'https://maps.googleapis.com/maps/api/geocode/json?';

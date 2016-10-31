@@ -1,4 +1,5 @@
 /* eslint no-multi-spaces: ["error", { exceptions: { "VariableDeclarator": true } }] */
+/* eslint new-cap: ["error", { "capIsNew": false }]*/
 
 // create a route handler
 const router          = require('express').Router();
@@ -6,20 +7,18 @@ const router          = require('express').Router();
 const yelpService     = require('../services/yelp');
 const dbService       = require('../models/favorites');
 const mapService      = require('../services/maps');
+const weatherService  = require('../services/weather');
+const icons           = require('../public/js/weather-icons');
 
 // Set up our routes
-
-// router.get('/', yelpService.initialSearch, (req, res) => {
-//   res.json(res.attractions);
-// });
-
-
-router.get('/', mapService.autocompleteCity, yelpService.initialSearch, dbService.getFavorites, (req, res) => {
-  console.log(res.city);
+router.get('/', mapService.autocompleteCity, yelpService.initialSearch, weatherService.findWeatherByCity, dbService.getFavorites, (req, res) => {
+  const icon = icons[res.weather.weather[0].main.toLowerCase()];
   res.render('explore', {
     city: res.city || [],
     results: res.attractions || [],
     favorites: res.favorite || [],
+    weather: res.weather || [],
+    icon,
   });
 });
 

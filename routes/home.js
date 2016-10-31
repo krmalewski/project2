@@ -1,7 +1,9 @@
 /* eslint no-multi-spaces: ["error", { exceptions: { "VariableDeclarator": true } }] */
+/* eslint new-cap: ["error", { "capIsNew": false }]*/
 
 // create a route handler
 const express       = require('express');
+
 const indexRouter   = express.Router();
 
 // Set up our routes
@@ -20,9 +22,5 @@ indexRouter.get('/login', (req, res) => {
 indexRouter.get('/signup', (req, res) => {
   res.render('signup');
 });
-
-// router.get('/findcity', mapService.autocompleteCity, yelpService.initialSearch, (req, res) => {
-//   res.json(res.city);
-// });
 
 module.exports = indexRouter;

@@ -1,10 +1,6 @@
 /* eslint no-multi-spaces: ["error", { exceptions: { "VariableDeclarator": true } }] */
-/* eslint key-spacing: ["error", { align: "value" }] */
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
-
-const mapService = require('../services/maps');
-const SEARCH_URL = 'https://maps.googleapis.com/maps/api/place/textsearch/json?';
-const API_KEY = 'AIzaSyA09kvA9vyvsfp5YwCTMycQ8DUMP5Pzbfo';
+/* eslint no-param-reassign: ["error", { "props": false }] */
 
 
 /* The following modules are needed for oAuth with Yelp's API */
@@ -16,12 +12,12 @@ const qs              = require('querystring');
 const _               = require('lodash');
 
 // The url we are using for the request
-const url = 'http://api.yelp.com/v2/search';
+const url             = 'http://api.yelp.com/v2/search';
 // Set our secrets here
-const consumerSecret = process.env.consumerSecret;
-const tokenSecret = process.env.tokenSecret;
-const consumerKey = process.env.oauth_consumer_key;
-const oauthToken = process.env.oauth_token;
+const consumerSecret  = process.env.consumerSecret;
+const tokenSecret     = process.env.tokenSecret;
+const consumerKey     = process.env.oauth_consumer_key;
+const oauthToken      = process.env.oauth_token;
 
 // This function will find the location the user wants to search for
 // and send it to the explore page
@@ -48,8 +44,8 @@ function initialSearch(req, res, next) {
   const cityString = req.query.location;
   const array = cityString.split(' ');
   let city = array[0];
-  for ( let i = 1; i < array.length; i++ ) {
-    let newWord = array[i].trim();
+  for (let i = 1; i < array.length; i += 1) {
+    const newWord = array[i].trim();
     city += `+${newWord}`;
   }
 
@@ -75,7 +71,8 @@ function initialSearch(req, res, next) {
 
   // Call on Yelp's Oauth 1.0a server, and it returns a signature
   // Note: This signature is only good for 300 seconds after oauth_timestamp
-  const signature = oauthSignature.generate(httpMethod, url, parameters, consumerSecret, tokenSecret, { encodeSignature: false });
+  const signature = oauthSignature.generate(httpMethod, url, parameters,
+   consumerSecret, tokenSecret, { encodeSignature: false });
 
   // Add the signature to the list of parameters
   parameters.oauth_signature = signature;
@@ -138,7 +135,8 @@ function searchAttractions(req, res, next) {
 
   // Call on Yelp's Oauth 1.0a server, and it returns a signature
   // Note: This signature is only good for 300 seconds after oauth_timestamp
-  const signature = oauthSignature.generate(httpMethod, url, parameters, consumerSecret, tokenSecret, { encodeSignature: false });
+  const signature = oauthSignature.generate(httpMethod, url, parameters,
+     consumerSecret, tokenSecret, { encodeSignature: false });
 
   // Add the signature to the list of parameters
   parameters.oauth_signature = signature;

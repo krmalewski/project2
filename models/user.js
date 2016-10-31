@@ -1,5 +1,6 @@
 /* eslint no-multi-spaces: ["error", { exceptions: { "VariableDeclarator": true } }] */
 /* eslint no-param-reassign: ["error", { "props": false }] */
+/* eslint new-cap: ["error", { "capIsNew": false }]*/
 
 const { ObjectID } = require('mongodb');
 const { getDB }    = require('../lib/dbConnect.js');
@@ -58,5 +59,5 @@ function getUserByUsername(username) {
 module.exports = {
   createUser,
   getUserById,
-  getUserByUsername
+  getUserByUsername,
 };

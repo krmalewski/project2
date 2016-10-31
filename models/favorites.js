@@ -1,3 +1,9 @@
+/* eslint no-multi-spaces: ["error", { exceptions: { "VariableDeclarator": true } }] */
+/* eslint new-cap: ["error", { "capIsNew": false }]*/
+/* eslint no-param-reassign: ["error", { "props": false }] */
+/* eslint guard-for-in: "error"*/
+/* eslint no-restricted-syntax: ["forInStatement"] */
+
 const { ObjectID } = require('mongodb');
 const { getDB }    = require('../lib/dbConnect.js');
 
