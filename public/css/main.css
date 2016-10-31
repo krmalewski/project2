@@ -585,9 +585,20 @@ footer p {
   width: 100%;
 }
 
-#see-my-trip input[type=submit] {
-  font-size: 30px;
-  padding: 5px;
+#clickme input[type=submit] {
+  font-size: 15px;
+  padding: 5px 10px;
+  border: none;
+  color: white;
+  background-color: #316F9C;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  font-weight: normal;
+  font-family: helvetica;
+}
+
+#clickme input[type=submit]:hover {
+  background-color: #265578;
 }
 
 #edit {

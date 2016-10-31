@@ -42,16 +42,22 @@
           <% favorites.forEach( attraction => { %>
             <li class="bucket-list-item">
               <h3><%= attraction.name %></h3>
-              <form class="delete-favorite" action="/explore/favorites/<%= attraction._id %>?_method=DELETE" method="post">
-                <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
-                <input type="submit" value="Delete">
-              </form>
+              <div id="bucket-list-buttons">
+                <form action="/explore/edit/<%= attraction._id %>" method="GET">
+                   <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
+                   <input type="submit" value="Edit">
+                </form>
+                <form class="delete-favorite" action="/explore/favorites/<%= attraction._id %>?_method=DELETE" method="post">
+                  <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
+                  <input type="submit" value="Remove">
+                </form>
+              </div>
             </li>
           <% }) %>
         </ul>
       </div>
       <div id="see-my-trip">
-        <form action="/maps" method="GET">
+        <form id="clickme" action="/maps" method="GET">
           <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
           <input type="hidden" name="lat" value=" <%= city[0].geometry.location.lat %>">
           <input type="hidden" name="lng" value=" <%= city[0].geometry.location.lng %>">
