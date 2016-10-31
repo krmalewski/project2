@@ -32,4 +32,16 @@ router.delete('/favorites/:id', mapService.postCity, dbService.deleteFavorites, 
   res.redirect(`/explore?location=${city}`);
 });
 
+router.get('/edit/:id', dbService.getAttraction, mapService.autocompleteCity, (req, res) => {
+  res.render('edit', {
+    item: res.attraction,
+    city: res.city,
+  });
+});
+
+router.put('/:id', dbService.editAttraction, mapService.postCity, (req, res) => {
+  const city = res.postcity;
+  res.redirect(`/explore?location=${city}`);
+});
+
 module.exports = router;

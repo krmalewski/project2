@@ -44,10 +44,9 @@
           <% favorites.forEach( attraction => { %>
           <li class="bucket-list-item">
             <h3><%= attraction.name %></h3>
-            <form action="/edit" method="GET">
-              <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
-              <input type="hidden" name="id" value="attraction._id">
-              <input type="submit" value="Edit">
+            <form action="/explore/edit/<%= attraction._id %>" method="GET">
+               <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
+               <input type="submit" value="edit">
             </form>
             <form class="delete-favorite" action="/explore/favorites/<%= attraction._id %>?_method=DELETE" method="post">
               <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
