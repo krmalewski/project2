@@ -1,7 +1,7 @@
 # Travel Buddy
 
 ## Summary
-This app makes planning your next trip a breeze! Simply decide on a destination, and the app will offer popular tourist attractions that you can add to your _Bucket List_. Once you have a full _Bucket List_, you can view a map with markers on all the places you want to visit!
+This app makes planning your next trip a breeze! Simply decide on a destination and the app will offer popular tourist attractions that you can add to your _Bucket List_. Once you have a full _Bucket List_, you can view a map with markers on all the places you want to visit!
 
 ![log in page](/public/images/profile.png)
 
@@ -14,7 +14,7 @@ As a user
 * edit descriptions of places saved to your _Bucket List_
 * view current weather conditions in the city that you chose
 * view a list with information including rating, reviews, address, phone number, and a link to more Yelp reviews of places saved to your _Bucket List_
-* view a Google Map of the city that you chose with markers on all the locations that have been saved to your _Bucket List_
+* view/interact with a Google Map of the city that you chose with markers on all the locations that have been saved to your _Bucket List_
 
 ## Use Case
 User will start by searching for a city that they are interested in visiting. The results will populate a list of popular tourist attractions with information including rating, reviews, address, phone number, and a link to more Yelp reviews. 
@@ -54,8 +54,8 @@ Trip Plan
     * [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/)
     * [Yelp API](https://www.yelp.com/developers/documentation/v2/overview)
     * [Open Weather API](https://openweathermap.org/api)
-* Express
 * Node
+* Express
 * MongoDB
 
 
