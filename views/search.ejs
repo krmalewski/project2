@@ -61,6 +61,11 @@
     </div>
 
     <div class="yelp-results-container">
+      <div>
+        <h1><%= city[0].formatted_address %></h1>
+        <h1>|</h1>
+        <h1><%= Math.floor(weather.main.temp) %>°F <%= icon %></h1>
+      </div>
       <div class="yelp-results">
         <% places.forEach( place => { %>
           <div class="tourism">
@@ -102,26 +107,26 @@
 
   <footer>
     <p>"I haven't been everywhere, but it's on my list."
-       -Susan Sontag</p>
+       - Susan Sontag</p>
   </footer>
 
   <script>
-  // https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-hotelsearch
-  // some help from here as well! :
-  // http://stackoverflow.com/questions/13689705/how-to-add-google-maps-autocomplete-search-box
-  function makeAutocomplete() {
-    const input = document.getElementById('autocomplete');
-    // Setting the default bounds to the viewport of Miami will help make searchs
-    // more relevant for users
-    const defaultBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(<%= city[0].geometry.viewport.southwest.lat %>,<%= city[0].geometry.viewport.southwest.lng %>),
-      new google.maps.LatLng(<%= city[0].geometry.viewport.northeast.lat %>,<%= city[0].geometry.viewport.northeast.lng %>));
-    const options = {
-      bounds: defaultBounds,
+    // https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-hotelsearch
+    // some help from here as well! :
+    // http://stackoverflow.com/questions/13689705/how-to-add-google-maps-autocomplete-search-box
+    function makeAutocomplete() {
+      const input = document.getElementById('autocomplete');
+      // Setting the default bounds to the viewport of Miami will help make searchs
+      // more relevant for users
+      const defaultBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(<%= city[0].geometry.viewport.southwest.lat %>,<%= city[0].geometry.viewport.southwest.lng %>),
+        new google.maps.LatLng(<%= city[0].geometry.viewport.northeast.lat %>,<%= city[0].geometry.viewport.northeast.lng %>));
+      const options = {
+        bounds: defaultBounds,
+      }
+      const autocomplete = new google.maps.places.Autocomplete(input, options);
     }
-    const autocomplete = new google.maps.places.Autocomplete(input, options);
-  }
-  google.maps.event.addDomListener(window, 'load', makeAutocomplete);
+    google.maps.event.addDomListener(window, 'load', makeAutocomplete);
   </script>
 </body>
 </html>

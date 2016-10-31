@@ -34,6 +34,7 @@
     </form>
   </div>
 
+
   <div class='search-results-container'>
     <div id="bucket-list">
       <h1>Bucket List</h1>
@@ -62,7 +63,11 @@
     </div>
 
     <div class="yelp-results-container">
-      <h1>Top Attractions in <%= city[0].formatted_address %></h1>
+      <div>
+        <h1>Top Attractions in <%= city[0].formatted_address %></h1>
+        <h1>|</h1>
+        <h1><%= Math.floor(weather.main.temp) %>°F <%= icon %></h1>
+      </div>
       <div class='yelp-results'>
         <% results.forEach( result => { %>
           <div class="tourism">
@@ -105,7 +110,7 @@
 
     <footer>
       <p>"I haven't been everywhere, but it's on my list."
-       -Susan Sontag</p>
+       - Susan Sontag</p>
     </footer>
     <script>
   // https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-hotelsearch
