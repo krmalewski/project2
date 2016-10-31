@@ -35,6 +35,7 @@ body {
 #index-container h1 {
   margin-bottom: 17px;
   color: #191719;
+  font-size: 70px;
 }
 
 #index-container a {
@@ -124,9 +125,6 @@ body {
   justify-content: space-around;
   align-items: center;
   flex-wrap: nowrap;
-/*  background-color: rgba(255, 236, 194, 0.9);*/
-  /*background-color: rgba(255, 153, 145, 0.9);*/
-/*  background-color: rgba(134, 134, 149, 0.9);*/
   background-color: rgba(173, 169, 171, 0.9);
   margin: 20vh 25vw;
   border-radius: 10px;
@@ -158,7 +156,6 @@ body {
   padding: 10px;
   border: none;
   background-color: #faf0e6;
-/*  background-color: #FFF8FB;*/
   font-size: 18px;
   text-align: center;
   border-radius: 7px;
@@ -258,7 +255,7 @@ body {
 
 #profile-header input[type=submit] {
   float: right;
-  margin-right: 30px;
+  margin: 20px 30px 0 0;
   background: none;
   border: none;
   padding: 0;
@@ -287,12 +284,26 @@ body {
   display: inline-block;
 }
 
-.explore-header-links {
+#logo {
+  margin: 0 20px;
   float: right;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo h2 {
+  margin: 20px 0 0 0;
+  font-family: 'Sacramento', cursive;
+  font-size: 30px;
+}
+
+.explore-header-links {
+  display: flex;
   flex-direction: row;
-  align-items: flex-end;
-  margin-top: 70px;
+  align-items: center;
+  justify-content: center;
 }
 
 .explore-header-links a {
@@ -313,7 +324,6 @@ body {
 
 .explore-header-links input[type=submit] {
   float: right;
-  margin-right: 20px;
   background: none;
   border: none;
   padding: 0;
@@ -498,7 +508,7 @@ footer p {
 #bucket-list {
   font-family: 'Archivo Narrow', sans-serif;
   width: 30vw;
-  height: 430px;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -514,6 +524,7 @@ footer p {
 #bucket-list h2 {
   margin: 0;
   font-size: 20px;
+  text-align: center;
 }
 
 #bucket-list img {
@@ -521,6 +532,13 @@ footer p {
   width: 100%;
   opacity: 0.5;
   z-index: -1;
+}
+
+.bucket-list-item h3 {
+  text-align: center;
+  font-family: helvetica;
+  font-size: 16px;
+/*  font-weight: normal;*/
 }
 
 .visit-here-list {
@@ -596,7 +614,7 @@ footer p {
   margin:0 10px 20px 10px;
   width: 52vw;
   overflow: scroll;
-  height: 400px;
+  height: 60vh;
 }
 
 .todo-list-item {
@@ -642,7 +660,7 @@ footer p {
 #activity-map {
   margin: 0 10px 20px 10px;
   width: 42vw;
-  height: 400px;
+  height: 60vh;
 }
 
 #map {

@@ -6,7 +6,7 @@
   <title>Trip Planner</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/main.css">
-  <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Dosis|Open+Sans+Condensed:300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Dosis|Open+Sans+Condensed:300|Sacramento" rel="stylesheet">
   <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA09kvA9vyvsfp5YwCTMycQ8DUMP5Pzbfo&libraries=places'>
   </script>
 </head>
@@ -14,11 +14,14 @@
 <body>
   <header class="explore-header">
     <h1>Explore.</h1>
-    <div class="explore-header-links">
-      <a href="/users/profile">Home<span> | </span></a>
-      <form action="/auth?_method=DELETE" method="post">
-        <input type="submit" value=" Log out.">
-      </form>
+    <div id="logo">
+      <h2>Travel Buddy</h2>
+      <div class="explore-header-links">
+        <a href="/users/profile">Home<span> | </span></a>
+        <form action="/auth?_method=DELETE" method="post">
+          <input type="submit" value=" Log out.">
+        </form>
+      </div>
     </div>
     <div class="explore-header-band"></div>
   </header>
@@ -78,8 +81,10 @@
                 <form class="save-favorite" action="/explore/favorites" method="POST">
                   <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
                   <input type="hidden" name="favorite[name]" value="<%= result.name %>">
-                  <input type="hidden" name="favorite[latitude]" value="<%= result.location.coordinate.latitude %>">
-                  <input type="hidden" name="favorite[longitude]" value="<%= result.location.coordinate.longitude %>">
+                  <% if (result.location.coordinate) { %>
+                    <input type="hidden" name="favorite[latitude]" value="<%= result.location.coordinate.latitude %>">
+                    <input type="hidden" name="favorite[longitude]" value="<%= result.location.coordinate.longitude %>">
+                  <% } %>
                   <input type="hidden" name="favorite[snip]" value="<%= result.snippet_text %>">
                   <input type="hidden" name="favorite[address]" value="<%= result.location.display_address %>">
                   <input type="hidden" name="favorite[phone]" value="<%= result.display_phone %>">
@@ -91,12 +96,15 @@
             </div>
           </div>
         <% }) %>
+        <% if (results.length === 0) { %>
+        <p>Sorry, we do not currently have information on that city. Please choose another destination.</p>
+        <% } %>
       </div>
     </div>
   </div>
 
     <footer>
-      <p>"I haven't been everywhere, but it's on my list.
+      <p>"I haven't been everywhere, but it's on my list."
        -Susan Sontag</p>
     </footer>
     <script>

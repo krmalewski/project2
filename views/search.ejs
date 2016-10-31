@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Search Your City</title>
   <link rel="stylesheet" href="/css/main.css">
-  <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Dosis|Open+Sans+Condensed:300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Dosis|Open+Sans+Condensed:300|Sacramento" rel="stylesheet">
   <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA09kvA9vyvsfp5YwCTMycQ8DUMP5Pzbfo&libraries=places'>
   </script>
 </head>
@@ -13,11 +13,14 @@
 <body>
   <header class="explore-header">
     <h1>Explore.</h1>
-    <div class="explore-header-links">
-      <a href="/users/profile">Home<span> | </span></a>
-      <form action="/auth?_method=DELETE" method="post">
-        <input type="submit" value=" Log out.">
-      </form>
+    <div id="logo">
+      <h2>Travel Buddy</h2>
+      <div class="explore-header-links">
+        <a href="/users/profile">Home<span> | </span></a>
+        <form action="/auth?_method=DELETE" method="post">
+          <input type="submit" value=" Log out.">
+        </form>
+      </div>
     </div>
     <div class="explore-header-band"></div>
   </header>
@@ -71,7 +74,7 @@
                 <p><span>Address: </span><%= place.location.display_address %></p>
                 <p><span>Phone: </span><%= place.display_phone %></p>
               </div>
-              <div id="attraction-image">
+              <div class="attraction-image">
                 <img src="<%= place.image_url %>" alt="">
                 <form class="save-favorite" action="/explore/favorites" method="POST">
                   <input type="hidden" name="location" value=" <%= city[0].formatted_address %>">
@@ -95,7 +98,7 @@
   </div>
 
   <footer>
-    <p>"I haven't been everywhere, but it's on my list.
+    <p>"I haven't been everywhere, but it's on my list."
        -Susan Sontag</p>
   </footer>
 
