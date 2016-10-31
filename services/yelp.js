@@ -30,6 +30,7 @@ function getCity(req, res, next) {
   next();
 }
 
+// Similar to above, this function keeps the users location when a get request is used
 function keepCity(req, res, next) {
   res.keepcity = req.query.location;
   next();
@@ -107,15 +108,13 @@ function searchAttractions(req, res, next) {
   const httpMethod = 'GET';
   let find = req.query.term;
 
-  // Using the autocomplete will give back a lengthy query
-  // split it and save the first array item, most likely the strongest
-  // search term for yelp
-
   const userParams = {
     location: req.query.location,
   };
 
-  // Set parameters
+  // Using the autocomplete will give back a lengthy query
+  // split it and save the first array item, most likely the strongest
+  // search term for yelp
   if (find) {
     if (find.includes(',')) {
       const foo = find.split(',');
