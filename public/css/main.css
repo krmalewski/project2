@@ -585,13 +585,10 @@ footer p {
 }
 
 #see-my-trip input[type=submit] {
-  font-size: 20px;
+  font-size: 30px;
   padding: 5px;
 }
 
-#see-my-trip input[type=sumbit]:hover {
-  background-color: pink;
-}
 
 #edit {
   margin-top: 125px;
@@ -599,7 +596,6 @@ footer p {
   width: 100%;
   display: flex;
   justify-content: center;
-/*  align-items: center;*/
   font-family: 'Archivo Narrow', sans-serif;
 }
 

@@ -1,10 +1,9 @@
 /* eslint no-multi-spaces: ["error", { exceptions: { "VariableDeclarator": true } }] */
 
-const express      = require('express');
-const { createUser }    = require('../models/user.js');
+const express            = require('express');
+const { createUser }     = require('../models/user.js');
 const { authenticate }   = require('../lib/auth');
-
-const usersRouter  = express.Router();
+const usersRouter        = express.Router();
 
 /**
  * Creates a new user by handling the POST request from a form with action `/users`

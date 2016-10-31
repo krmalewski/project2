@@ -1,9 +1,11 @@
-// create a route handler
-const router = require('express').Router();
+/* eslint no-multi-spaces: ["error", { exceptions: { "VariableDeclarator": true } }] */
 
-const yelpService = require('../services/yelp');
-const dbService = require('../models/favorites');
-const mapService = require('../services/maps');
+// create a route handler
+const router        = require('express').Router();
+
+const yelpService   = require('../services/yelp');
+const dbService     = require('../models/favorites');
+const mapService    = require('../services/maps');
 
 // Set up our routes
 

@@ -34,8 +34,12 @@ function autocompleteCity(req, res, next) {
 function postCity(req, res, next) {
   const cityString = req.body.location;
   const array = cityString.split(',');
-  const indexTwo = array[1].trim();
-  res.postcity = `${array[0]}+${indexTwo}`;
+  if (array.length > 1) {
+    const indexTwo = array[1].trim();
+    res.postcity = `${array[0]}+${indexTwo}`;
+  } else {
+    res.postCity = cityString;
+  }
   next();
 }
 

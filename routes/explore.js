@@ -1,27 +1,23 @@
-// create a route handler
-const router = require('express').Router();
+/* eslint no-multi-spaces: ["error", { exceptions: { "VariableDeclarator": true } }] */
 
-const yelpService = require('../services/yelp');
-const dbService = require('../models/favorites');
-const mapService = require('../services/maps');
+// create a route handler
+const router          = require('express').Router();
+
+const yelpService     = require('../services/yelp');
+const dbService       = require('../models/favorites');
+const mapService      = require('../services/maps');
 
 // Set up our routes
-// router.get('/', yelpService.keepCity, yelpService.initialSearch, dbService.getFavorites, (req, res) => {
-//   res.render('explore', {
-//     results: res.attractions,
-//     favorites: res.favorite || [],
-//     city: res.keepcity,
-//   });
-// });
 
 // router.get('/', yelpService.initialSearch, (req, res) => {
 //   res.json(res.attractions);
 // });
 
+
 router.get('/', mapService.autocompleteCity, yelpService.initialSearch, dbService.getFavorites, (req, res) => {
   console.log(res.city);
   res.render('explore', {
-    city: res.city,
+    city: res.city || [],
     results: res.attractions || [],
     favorites: res.favorite || [],
   });
