@@ -66,6 +66,9 @@ Trip Plan
 4. The [tom-cruise-movie-db](https://git.generalassemb.ly/wdi-nyc-60/tom-cruise-movie-db) was refernced for the "PUT" request.
 5. The [itunes-crud-lab](https://git.generalassemb.ly/wdi-nyc-60/itunes_crud_lab) was refereced for "GET", "POST", and "DELETE" requests. 
 6. The [open_weather_search_solution](https://git.generalassemb.ly/wdi-nyc-60/open_weather_search_solution) was referenced when working with the Open Weather API.
+7. Joey Pinhas helped make this function more userfriendly. If users submit a username/password that does not exist, this functionalerts them that "Username and/or password does not exist" so they do not encounter an application error. 
+
+![code-snip](/public/images/code-login.png)
 
 ## Hurdles 
 1. The Yelp API required OAuth.

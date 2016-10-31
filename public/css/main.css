@@ -216,6 +216,11 @@ body {
   color: black;
 }
 
+.error {
+  color: #7f0000;
+  font-weight: bold;
+}
+
 #profile-container {
   display: flex;
   flex-direction: column;

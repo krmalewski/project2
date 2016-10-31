@@ -14,6 +14,9 @@
       <h3>Travel Buddy</h3>
       <h1>"Adventure is worthwhile".</h1>
       <p>-Aesop</p>
+      <% if (error) { %>
+        <p class='error'><%= error %></p>
+      <% } %>
       <form id="login-form" action="/auth" method="post">
           <input type="text" name="user[username]" value="" placeholder="Username">
           <input type="password" name="user[password]" value="" placeholder="Password">
