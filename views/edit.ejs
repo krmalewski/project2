@@ -3,15 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Edit</title>
-  <link rel="stylesheet" href="">
+  <title>Edit Attraction</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Dosis|Sacramento" rel="stylesheet">
 </head>
 <body>
-  <form class="edit" action="/explore/<%= item._id %>?_method=PUT" method="POST">
+  <div class='background'>
+    <img class="index-background" src="/images/travel05.jpg" alt="">
+  </div>
+
+  <div id="edit-container">
+    <h3>Travel Buddy</h3>
     <h2><%= item.name %></h2>
-    <input type="text" name="item[snip]" value="<%= item.snip %>">
-    <input type="hidden" name="location" value="<%= city[0].formatted_address %>">
-    <input type="submit" value="Update">
-  </form>
+    <p>Update information about this bucket list item below.</p>
+    <form id="edit" action="/explore/<%= item._id %>?_method=PUT" method="POST">
+      <input type="hidden" name="location" value="<%= city[0].formatted_address %>">
+      <input type="submit" value="Update">
+    </form>
+    <textarea form="edit" rows="6" cols="50" name="item[snip]" value="<%= item.snip %>">
+    </textarea>
+    <a href="/">Back to homepage.</a>
+  </div>
 </body>
 </html>

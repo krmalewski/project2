@@ -686,6 +686,86 @@ footer p {
   height: 100%;
 }
 
+#edit-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
+  background-color: rgba(224, 159, 146, 0.7);
+  margin: 20vh 30vw;
+  border-radius: 10px;
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 30px;
+}
+
+#edit-container h3 {
+  font-family: 'Sacramento', cursive;
+  font-size: 40px;
+  margin: 20px 0 0 0;
+}
+
+#edit-container h2 {
+  margin: 0;
+  font-size: 30px;
+}
+
+#edit-container p {
+  font-size: 15px;
+}
+
+#edit {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin-top: 0;
+}
+
+#edit-container a {
+  text-decoration: none;
+  padding-bottom: 20px;
+  color: #343036;
+  font-size: 20px;
+}
+
+#edit-container textarea {
+  width: 90%;
+  height: 60%;
+  border: none;
+  background-color: #FFE7DC;
+  font-size: 18px;
+  border-radius: 7px;
+  margin: 0 auto 10px auto;
+  -webkit-appearance: none;
+  resize: none;
+}
+
+#edit-container input[type=text]:hover {
+  border: 2px solid #555;
+}
+
+#edit-container a:hover {
+  color: black;
+}
+
+#edit-container input[type=submit] {
+  padding: 5px 15px 5px 15px;
+  border: none;
+  font-size: 17px;
+  margin-bottom: 10px;
+  background-color: #876058;
+  border-radius: 5px;
+  -webkit-appearance: none;
+}
+
+#edit-container input[type=submit]:hover {
+  background-color: #A6766C;
+  -webkit-appearance: none;
+}
+
 input[type=text] {
   width: 400px;
 
