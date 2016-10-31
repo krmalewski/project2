@@ -32,7 +32,8 @@ body {
 }
 
 #index-container h1 {
-  margin-bottom: 17px;
+  margin: 40px 5px 17px 5px;
+  text-align: center;
   color: #191719;
   font-size: 70px;
 }
@@ -42,6 +43,8 @@ body {
   color: #3E3940;
   padding-bottom: 20px;
   font-size: 25px;
+  text-align: center;
+  margin: 0 10px;
 }
 
 #index-container a:hover {
@@ -64,12 +67,14 @@ body {
 #signup-container h3 {
   font-family: 'Sacramento', cursive;
   font-size: 40px;
-  margin: 20px 0 0 0;
+  margin: 20px 10px 0 10px;
+  text-align: center;
 }
 
 #signup-container h1 {
-  margin: 0 0 22px 0;
+  margin: 0 10px 22px 10px;
   color: #191719;
+  text-align: center;
 }
 
 #signup {
@@ -86,6 +91,8 @@ body {
   padding-bottom: 30px;
   color: #343036;
   font-size: 20px;
+  text-align: center;
+  margin: 0 15px;
 }
 
 #signup-container input[type=text], #signup-container input[type=password] {
@@ -139,13 +146,15 @@ body {
 #login-container h3 {
   font-family: 'Sacramento', cursive;
   font-size: 40px;
-  margin: 20px 0 0 0;
+  margin: 20px 10px 0 10px;
+  text-align: center;
 }
 
 #login-container h1 {
   font-size: 45px;
   color: #191719;
-  margin: 0;
+  margin: 0 10px;
+  text-align: center;
 }
 
 #login-container p {
@@ -199,6 +208,8 @@ body {
   padding-bottom: 30px;
   color: #343036;
   font-size: 20px;
+  text-align: center;
+  margin: 0 15px;
 }
 
 #login-container a:hover {
@@ -530,11 +541,12 @@ footer p {
   box-shadow: 5px 5px 5px lightgray;
 }
 #bucket-list h1 {
-  margin: 0;
+  margin: 0 5px;
+  text-align: center;
 }
 
 #bucket-list h2 {
-  margin: 0;
+  margin: 0 5px;
   font-size: 20px;
   text-align: center;
 }
@@ -723,16 +735,21 @@ footer p {
 #edit-container h3 {
   font-family: 'Sacramento', cursive;
   font-size: 40px;
-  margin: 20px 0 0 0;
+  margin: 20px 15px 0 15px;
+  text-align: center;
 }
 
 #edit-container h2 {
   margin: 0;
   font-size: 30px;
+  margin: 0 15px;
+  text-align: center;
 }
 
 #edit-container p {
   font-size: 15px;
+  margin: 15px;
+  text-align: center;
 }
 
 #edit {
@@ -750,6 +767,8 @@ footer p {
   padding-bottom: 20px;
   color: #343036;
   font-size: 20px;
+  text-align: center;
+  margin: 0 15px;
 }
 
 #edit-container textarea {
