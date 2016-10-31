@@ -1,9 +1,9 @@
-#T ravel Buddy
+# Travel Buddy
 
 ## Summary
 This app makes planning your next trip a breeze! Simply decide on a destination, and the app will offer popular tourist attracts that you can add to your bucket list. Once you have a full bucket list, you can view a map with markers of all the places you want to visit!
 
-![log in page](/images/profile.png)
+![log in page](/public/images/profile.png)
 
 ## User Story
 
@@ -37,10 +37,29 @@ Register/Log In
 ![login page](/public/images/login-wireframe.png)
 
 Search Results 
-![search results page](/images/explore-wireframe.png)
+![search results page](/public/images/explore-wireframe.png)
 
 Trip Plan
-![trip plan page](/images/map-wireframe.png)
+![trip plan page](/public/images/map-wireframe.png)
 
 ## Technologies Used 
+
+#### API's 
+* [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/)
+* [Yelp API](https://www.yelp.com/developers/documentation/v2/overview)
+* [Open Weather API](https://openweathermap.org/api)
+
+## Sources 
+1. This [site](https://arian.io/how-to-use-yelps-api-with-node/) was helpful with getting the secure authorization protocol (OAuth 1.0a, xAuth) to work through the Yelp API.
+2. This [site](https://wrightshq.com/playground/placing-multiple-markers-on-a-google-map-using-api-3/) was useful when trying to render multiple markers on my Google Map.
+3. The [user_auth_itunes](https://git.generalassemb.ly/wdi-nyc-60/user_auth_itunes) was referenced. 
+4. The [tom-cruise-movie-db](https://git.generalassemb.ly/wdi-nyc-60/tom-cruise-movie-db) was refernced for the "PUT" request.
+5. The [itunes-crud-lab](https://git.generalassemb.ly/wdi-nyc-60/itunes_crud_lab) was refereced for "GET", "POST", and "DELETE" requests. 
+6. The [open_weather_search_solution](https://git.generalassemb.ly/wdi-nyc-60/open_weather_search_solution) was referenced when working with the Open Weather API.
+
+## Hurdles 
+1. The Yelp API required OAuth.
+2. Google Maps was challenging because all the maps are created from constructors within the API library so this API has to be used on the front end.
+3. Passing the city that the user selected on their profile page between all the different pages.
+4. Passing Google Places autocorrect results to the Yelp API fetch. 
 
